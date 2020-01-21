@@ -1,0 +1,14 @@
+export const GETALLUSERS = 'GETALLUSERS';
+export const GETUSER = 'GETUSER';
+export const GETFILTEREDUSERS = 'GETFILTEREDUSERS';
+export const CREATEUSER = 'CREATEUSER';
+export const UPDATEUSER = 'UPDATEUSER';
+export const RESETPASSWORD = 'RESETPASSWORD';
+export const MENUDATA = 'MENUDATA';
+
+
+
+export const GETALLROLES = 'GETALLROLES';
+export const CREATEROLE = 'CREATEROLE';
+export const UPDATEROLE = 'UPDATEROLE';
+export const GETROLEGROUPLIST = 'GETROLEGROUPLIST';
