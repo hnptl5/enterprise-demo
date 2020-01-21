@@ -10,6 +10,7 @@ import ComputerRoundedIcon from '@material-ui/icons/ComputerRounded';
 import SwipeableViews from 'react-swipeable-views';
 import styled from 'styled-components';
 import OnBoarding from '../Onboarding';
+import Home from '../Home';
 
 
 const useStyles = makeStyles({
@@ -72,7 +73,7 @@ export default function IconLabelTabs() {
           <Tab icon={<ComputerRoundedIcon />} label="Colleague Dashboard" value={3} className={classes.tabStyle} />
         </Tabs>
         <SwipeableViews index={value} onChangeIndex={handleChange}>
-          <div>Hello World</div>
+          <div><Home /></div>
           <div><OnBoarding /></div>
           <div>Rules Component</div>
           <div>Dashboard Colleague Component</div>
