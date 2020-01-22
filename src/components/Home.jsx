@@ -2,32 +2,21 @@ import React, {Component} from 'react';
 import {Box, Button, Container} from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form } from 'react-bootstrap';
 // import MaterialTable from 'material-table';
-import {PieChart, Pie, ResponsiveContainer, Cell, Sector} from 'recharts';
+import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label} from 'recharts';
+import './css/home.css';
 
-const data1 = [
+const data = [
   {
-    "name": "Group A",
-    "value": 2400
+    "name": "Lending",
+    "value": 4
   },
   {
-    "name": "Group B",
-    "value": 4567
+    "name": "Online Banking",
+    "value": 2
   },
   {
-    "name": "Group C",
-    "value": 1398
-  },
-  {
-    "name": "Group D",
-    "value": 9800
-  },
-  {
-    "name": "Group E",
-    "value": 3908
-  },
-  {
-    "name": "Group F",
-    "value": 4800
+    "name": "Fraud",
+    "value": 1
   }
 ];
 
@@ -74,15 +63,23 @@ const renderShape = props => {
   );
 }
 class Home extends Component {
+  state = {
+    activeIndex: 0
+  };
 
+  onPieEnter = (data, index) => {
+    this.setState({
+      activeIndex: index
+    });
+  };
    
    render(){
     return (
         
-    <div>
+    <div >
         <Row>
-            <Col className=" ml-3 mt-3">
-             <h5> Top Categories  This Month </h5>
+            <Col sm={3}  className=" ml-3 mt-3 sample pb-3">
+             <h5 className="ml-2">  Top Categories This Month </h5>
 
             <Card style={{ width: '18rem' }}>
             <ListGroup variant="flush" className="">
@@ -101,21 +98,44 @@ class Home extends Component {
             <Col>
             <ResponsiveContainer>
               <PieChart width={730} height={250}>
-                <Pie data={data1} 
+                <Pie data={data} 
+                
+                    activeIndex = {this.state.activeIndex}
                     dataKey="value" 
                     nameKey="name" 
                     cx="50%" 
                     cy="50%" 
                     innerRadius={60} 
                     outerRadius={80} 
-                    fill="#82ca9d" 
-                    label />
+                    fill="blue"
+                    onMouseEnter={this.onPieEnter}
+                    // label
+                    >
+                    
+                    <Label position="center"> Use Case Tracker </Label>
+
+                        {
+                            data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill="blue"/>
+                             )
+                            )
+                        }
+                        
+                  {/* <Pie data={data} cx="50%" cy="50%" outerRadius={80} innerRadius={60}>
+                                      <Label position={"center"}> Use Cases </Label>
+
+                        {
+                            data.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill="blue"/>
+                            ))
+                        } */}
+                  </Pie>
             </PieChart>
             </ResponsiveContainer>
             </Col>
 
             <Col>
-                <h3> Graph </h3>
+                <h3 className="text-center mt-4"> Graph </h3>
             </Col>
         </Row>
 

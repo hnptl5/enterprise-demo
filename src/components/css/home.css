@@ -1,0 +1,5 @@
+.sample{
+        border-radius: 30px;
+        background: rgb(255,194,16);
+        background: linear-gradient(90deg, rgba(255,194,16,1) 35%, rgba(255,215,55,1) 100%);
+    }
