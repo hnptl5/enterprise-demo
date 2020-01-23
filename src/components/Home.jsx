@@ -1,22 +1,27 @@
 import React, {Component} from 'react';
 import {Box, Button, Container} from '@material-ui/core';
-import { Card, ListGroup, Row, Col, Form } from 'react-bootstrap';
+import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
 // import MaterialTable from 'material-table';
 import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label} from 'recharts';
 import './css/home.css';
 
 const data = [
   {
-    "name": "Lending",
-    "value": 4
+    name: "Lending",
+    value: 4,
+    index: 1
   },
   {
-    "name": "Online Banking",
-    "value": 2
+    name: "Online Banking",
+    value: 2,
+    index: 2
+
   },
   {
-    "name": "Fraud",
-    "value": 1
+    name: "Fraud",
+    value: 1,
+    index: 3
+
   }
 ];
 
@@ -50,6 +55,7 @@ const renderShape = props => {
           minimumFractionDigits: 2
         })} */}
       </text>
+
       <Sector
         cx={cx}
         cy={cy}
@@ -59,10 +65,23 @@ const renderShape = props => {
         endAngle={endAngle}
         fill={fill}
       />
+
+        <Sector
+            cx={cx}
+            cy={cy}
+            startAngle={startAngle}
+            endAngle={endAngle}
+            innerRadius={outerRadius + 6}
+            outerRadius={outerRadius + 10}
+            fill={fill}
+      />
+
     </g>
   );
 }
+
 class Home extends Component {
+
   state = {
     activeIndex: 0
   };
@@ -71,6 +90,9 @@ class Home extends Component {
     this.setState({
       activeIndex: index
     });
+
+    console.log(data);
+    console.log("Index " + index)
   };
    
    render(){
@@ -78,63 +100,99 @@ class Home extends Component {
         
     <div >
         <Row>
-            <Col sm={3}  className=" ml-3 mt-3 sample pb-3">
-             <h5 className="ml-2">  Top Categories This Month </h5>
+            <Col sm={4}  className=" ml-4 mt-3 sample pb-3">
+            <div className="row">
+                <div className="col-4 ml-1"> <b>Top Categories </b>
+                    {/* <h5 className="col-9 ml-2">  Top Categories </h5> */}
+                </div>
+                <div className="col-7 text-right"> This Month
+                    {/* <h5 className="text-right ml-2"> This Month </h5> */}
+                </div>
+            </div>
+            <Card className="mt-4">
+                <Card.Header>
+                    <div className="row no-gutters"> 
+                        <div className="ml-4 col-9"> SMS </div>
+                        <div className="text-right"> 2,000 </div> 
+                    </div>
 
-            <Card style={{ width: '18rem' }}>
-            <ListGroup variant="flush" className="">
-                <ListGroup.Item>SMS</ListGroup.Item>
-                <br />
-                <ListGroup.Item>Emails</ListGroup.Item>
-                <br />
-                <ListGroup.Item>Print</ListGroup.Item>
-                <br />
-                <ListGroup.Item>Push Notification</ListGroup.Item>
-            </ListGroup>
+                    <div className="row no-gutters"> 
+                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
+                        <div className="ml-2 col-10"> <ProgressBar variant="warning" now={40} /></div>
+                    </div>
+                </Card.Header>
+                {/* <Card.Body variant="flush" className="row no-gutters"> </Card.Body> */}
+                <Card.Header>
+                    <div className="row no-gutters"> 
+                        <div className="ml-4 col-9"> Emails </div>
+                        <div className="text-right"> 8,000 </div> 
+                    </div>
+
+                    <div className="row no-gutters"> 
+                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
+                        <div className="ml-2 col-10"> <ProgressBar variant="" now={85} /></div>
+                    </div>
+                </Card.Header>
+
+                <Card.Header>
+                    <div className="row no-gutters"> 
+                        <div className="ml-4 col-9"> Print </div>
+                        <div className="text-right"> 1,000 </div> 
+                    </div>
+
+                    <div className="row no-gutters"> 
+                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
+                        <div className="ml-2 col-10"> <ProgressBar variant="success" now={15} /></div>
+                    </div>
+                </Card.Header>
             </Card>
 
             </Col>
 
-            <Col>
+            <Col sm={4}>
             <ResponsiveContainer>
-              <PieChart width={730} height={250}>
-                <Pie data={data} 
-                
+            {/* <Card style={{ height: "300px"}}> */}
+            <Card className="mt-3">
+
+            <Card.Header className="text-center"> 
+                <h3> Use Case Tracker </h3>
+            </Card.Header>
+
+            <Card.Body>
+              <PieChart width={350} height={250}>
+                <Pie 
+                    data={data} 
                     activeIndex = {this.state.activeIndex}
+                    activeShape={renderShape}
                     dataKey="value" 
                     nameKey="name" 
                     cx="50%" 
                     cy="50%" 
-                    innerRadius={60} 
+                    innerRadius={70} 
                     outerRadius={80} 
                     fill="blue"
                     onMouseEnter={this.onPieEnter}
-                    // label
-                    >
-                    
+                    label
+                    >       
                     <Label position="center"> Use Case Tracker </Label>
-
+                    
                         {
                             data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill="blue"/>
-                             )
+                                <Cell 
+                                    key={`cell-${index}`} 
+                                    fill="blue"/>
+                                 )
                             )
                         }
-                        
-                  {/* <Pie data={data} cx="50%" cy="50%" outerRadius={80} innerRadius={60}>
-                                      <Label position={"center"}> Use Cases </Label>
 
-                        {
-                            data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill="blue"/>
-                            ))
-                        } */}
                   </Pie>
             </PieChart>
+            </Card.Body>
+            </Card>
             </ResponsiveContainer>
             </Col>
 
-            <Col>
+            <Col sm={3}>
                 <h3 className="text-center mt-4"> Graph </h3>
             </Col>
         </Row>
