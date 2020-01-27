@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import CustomizedButtons from '../components/common/Button';
@@ -26,10 +26,10 @@ const Wrapper = styled.div`
   }
   .buttonSpace {
     display: flex;
-    justify-content: space-evenly;
     margin-top: 20px;
     padding-bottom: 30px;
   }
+
   .MuiFormControl-root.MuiTextField-root {
     width: 100%;
     color: #00945f;
@@ -88,6 +88,8 @@ export default () => {
   const [lobLeaderEmail, setLobLeaderEmail] = useState('');
   const [appLeaderName, setAppLeaderName] = useState('');
   const [appLeaderEmail, setAppLeaderEmail] = useState('');
+  const [userName, setUserName] = useState('');
+  const [form, setForm] = useState('');
 
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
@@ -97,17 +99,21 @@ export default () => {
 
   const handleReset = e => {
     e.preventDefault();
-    // setUserName('');
-    // setFirstName('');
-    // setLastName('');
-    // setEmail('');
-    // setTechTeam('');
-    // setPassword('');
-    // setGroupMailId('');
-    // setLeaderName('');
-    // setLeaderEmail('');
-    // setPhoneNumber('');
-    // setBusinessLine('');
+    setApplicationName('');
+    setApplicationDate('');
+    setLobName('');
+    setRulesBasedComm('');
+    setProductSupported('');
+    setAppplicationEmailId('');
+    setExpectedComValue('');
+    setExpectedComValuePerDay('');
+    setApproverEmail('');
+    setLobLeaderName('');
+    setLobLeaderEmail('');
+    setAppLeaderName('');
+    setAppLeaderEmail('');
+    setApplicationContact('');
+    setUserName('');
   };
   return (
     <Wrapper>
@@ -289,10 +295,10 @@ export default () => {
                 id="outlined-email"
                 label="User Name"
                 type="text"
-                // value={userName}
+                value={userName}
                 variant="outlined"
                 required
-                // onChange={e => setUserName(e.target.value)}
+                onChange={e => setUserName(e.target.value)}
               />
             </Form.Group>
 
@@ -301,10 +307,10 @@ export default () => {
                 id="outlined-email"
                 label="User Name"
                 type="text"
-                // value={userName}
+                value={userName}
                 variant="outlined"
                 required
-                // onChange={e => setUserName(e.target.value)}
+                onChange={e => setUserName(e.target.value)}
               />
             </Form.Group>
 
@@ -313,10 +319,10 @@ export default () => {
                 id="outlined-email"
                 label="User Name"
                 type="text"
-                // value={userName}
+                value={userName}
                 variant="outlined"
                 required
-                // onChange={e => setUserName(e.target.value)}
+                onChange={e => setUserName(e.target.value)}
               />
             </Form.Group>
 
@@ -325,10 +331,10 @@ export default () => {
                 id="outlined-email"
                 label="User Name"
                 type="text"
-                // value={userName}
+                value={userName}
                 variant="outlined"
                 required
-                // onChange={e => setUserName(e.target.value)}
+                onChange={e => setUserName(e.target.value)}
               />
             </Form.Group>
           </div>
@@ -362,9 +368,18 @@ export default () => {
           </div>
         </div>
 
-        <div className="buttonSpace">
-          <CustomizedButtons type="submit" size="large" OnClick={e => {}} value="SUBMIT" />
+      <Row>
+        <Col sm={5} className="">
+        <div className="buttonSpace ml-5">
+              <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
         </div>
+        </Col>
+        <Col sm={2}>
+        <div className="buttonSpace">
+              <CustomizedButtons type="submit" size="large" OnClick={e => {}} value="SUBMIT" /> 
+        </div>
+        </Col>
+      </Row>
       </Form>
     </Wrapper>
   );

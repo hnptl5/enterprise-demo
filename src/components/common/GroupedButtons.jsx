@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import { green } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -28,19 +28,27 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
     margin: theme.spacing(1, 0.5),
   },
+  sample:{
+    color: "red",
+    background: "blue",
+    // textDecoration: "underline"
+  },
 }));
 
 const StyledToggleButtonGroup = withStyles(theme => ({
+
   grouped: {
     margin: theme.spacing(0.5),
     border: 'none',
     padding: theme.spacing(0, 1),
     '&:not(:first-child)': {
       borderRadius: theme.shape.borderRadius,
+
     },
     '&:first-child': {
       borderRadius: theme.shape.borderRadius,
     },
+    
     color: 'green',
   },
 }))(ToggleButtonGroup);
@@ -55,11 +63,26 @@ export default function CustomizedDividers() {
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
+    
+    // console.log(StyledToggleButtonGroup);
+    // console.log(newAlignment);
+    // console.log(event)
   };
+
+  const sample = () => {
+    // StyledToggleButtonGroup.grouped = {
+    //   color: "red"
+    // }
+
+    // useStyles.paper.background = "red";
+
+    console.log(StyledToggleButtonGroup.grouped.color);
+  }
 
   const classes = useStyles();
 
   return (
+
     <div>
       <Paper elevation={0} className={classes.paper}>
         <StyledToggleButtonGroup
@@ -67,9 +90,13 @@ export default function CustomizedDividers() {
           value={alignment}
           exclusive
           onChange={handleAlignment}
+          // onClick={handleFormat}
           aria-label="text alignment"
         >
+          {/* <ToggleButton value="left" aria-label="left aligned" onClick={()=>{setFormats(console.log("Hello world")) }}> */}
+          {/* <ToggleButton value="left" aria-label="left aligned" className={classes.sample}> */}
           <ToggleButton value="left" aria-label="left aligned">
+
             Marketing
           </ToggleButton>
           <ToggleButton value="center" aria-label="centered">

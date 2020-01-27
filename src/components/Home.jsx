@@ -172,7 +172,6 @@ class Home extends Component {
                     outerRadius={80} 
                     fill="blue"
                     onMouseEnter={this.onPieEnter}
-                    label
                     >       
                     <Label position="center"> Use Case Tracker </Label>
                     
