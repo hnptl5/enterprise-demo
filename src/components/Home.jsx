@@ -2,23 +2,26 @@ import React, {Component} from 'react';
 import {Box, Button, Container} from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
 // import MaterialTable from 'material-table';
-import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label} from 'recharts';
+import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label, Text} from 'recharts';
 import './css/home.css';
 
 const data = [
   {
     name: "Lending",
+    content: "Use Cases 1 YTD 2,300",
     value: 4,
     index: 1
   },
   {
     name: "Online Banking",
+    content: "Use Cases 1 YTD 2,300",
     value: 2,
     index: 2
 
   },
   {
     name: "Fraud",
+    content: "Use Cases 1 YTD 2,300",
     value: 1,
     index: 3
 
@@ -83,21 +86,22 @@ const renderShape = props => {
 class Home extends Component {
 
   state = {
-    activeIndex: 0
+    activeIndex: 0,
+    name: 'Lending',
+    content: ''
   };
 
   onPieEnter = (data, index) => {
     this.setState({
-      activeIndex: index
+      activeIndex: index,
+      name: data.name,
+      content: data.content
     });
 
-    console.log(data);
-    console.log("Index " + index)
   };
    
    render(){
     return (
-        
     <div >
         <Row>
             <Col sm={4}  className=" ml-4 mt-3 sample pb-3">
@@ -172,21 +176,30 @@ class Home extends Component {
                     outerRadius={80} 
                     fill="blue"
                     onMouseEnter={this.onPieEnter}
+                    label
                     >       
-                    <Label position="center"> Use Case Tracker </Label>
+                    
+                       
+                       <Label  value={this.state.name} position="center">
+                       </Label>
+
+                    
                     
                         {
                             data.map((entry, index) => (
+
                                 <Cell 
                                     key={`cell-${index}`} 
-                                    fill="blue"/>
+                                    fill="blue"                                    
+                                />
+
                                  )
                             )
                         }
 
-                  </Pie>
-            </PieChart>
-            </Card.Body>
+                    </Pie>
+                </PieChart>
+              </Card.Body>
             </Card>
             </ResponsiveContainer>
             </Col>
