@@ -65,10 +65,6 @@ export default function CustomizedDividers() {
     setAlignment(newAlignment);
   };
 
-
-    console.log(StyledToggleButtonGroup.grouped.color);
-  }
-
   const classes = useStyles();
 
   return (
