@@ -63,18 +63,8 @@ export default function CustomizedDividers() {
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
-    
-    // console.log(StyledToggleButtonGroup);
-    // console.log(newAlignment);
-    // console.log(event)
   };
 
-  const sample = () => {
-    // StyledToggleButtonGroup.grouped = {
-    //   color: "red"
-    // }
-
-    // useStyles.paper.background = "red";
 
     console.log(StyledToggleButtonGroup.grouped.color);
   }

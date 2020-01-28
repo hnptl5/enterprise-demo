@@ -30,6 +30,13 @@ const Wrapper = styled.div`
     padding-bottom: 30px;
   }
 
+  .buttonSpace2{
+    display: flex;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    justify-content: center;
+  }
+
   .MuiFormControl-root.MuiTextField-root {
     width: 100%;
     color: #00945f;
@@ -370,7 +377,7 @@ export default () => {
 
       <Row>
         <Col sm={5} className="">
-        <div className="buttonSpace ml-5">
+        <div className="buttonSpace2">
               <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
         </div>
         </Col>
