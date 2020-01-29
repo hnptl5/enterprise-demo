@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Box, Button, Container} from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
 // import MaterialTable from 'material-table';
-import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label, Text} from 'recharts';
+import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label, Text, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 'recharts';
 import HomeComponent from './HomeComponent';
+import {ToggleButton, ToggleButtonGroup }  from '@material-ui/lab';
 import './css/home.css';
 
 const data = [
@@ -54,6 +55,51 @@ const messageData = [
 
   }
 ];
+
+const graphData = [
+  {
+    "name": "Page A",
+    "uv": 4000,
+    "pv": 2400,
+    "amt": 2400
+  },
+  {
+    "name": "Page B",
+    "uv": 3000,
+    "pv": 1398,
+    "amt": 2210
+  },
+  {
+    "name": "Page C",
+    "uv": 2000,
+    "pv": 9800,
+    "amt": 2290
+  },
+  {
+    "name": "Page D",
+    "uv": 2780,
+    "pv": 3908,
+    "amt": 2000
+  },
+  {
+    "name": "Page E",
+    "uv": 1890,
+    "pv": 4800,
+    "amt": 2181
+  },
+  {
+    "name": "Page F",
+    "uv": 2390,
+    "pv": 3800,
+    "amt": 2500
+  },
+  {
+    "name": "Page G",
+    "uv": 3490,
+    "pv": 4300,
+    "amt": 2100
+  }
+]
 
 const renderShape = props => {
 
@@ -200,6 +246,32 @@ class Home extends Component {
 
             <Col sm={4} className="sample mt-3">
                 <h5 className="text-center mt-4"> <b>Outbound Communication Volumes </b> </h5>
+
+                <LineChart width={425} height={200} data={graphData}
+                    margin={{ top: 90, right: 30, left: 50, bottom: 5 }}>
+                    <Tooltip />
+                    <Line type="natural" dataKey="pv" stroke="white" strokeWidth= {10} dot={false}/>
+                </LineChart>
+
+          
+                  <ToggleButtonGroup
+                    value
+                    exclusive
+                    onChange
+                    aria-label="text alignment"
+                    className="ml-5 mt-5"
+                  >
+                      <ToggleButton value="left" aria-label="left aligned">
+                      Today
+                      </ToggleButton>
+                      <ToggleButton value="center" aria-label="centered">
+                      Week
+                      </ToggleButton>
+                      <ToggleButton value="right" aria-label="right aligned">
+                      Month
+                      </ToggleButton>
+                </ToggleButtonGroup>
+            
             </Col>
         </Row>
 
@@ -208,4 +280,25 @@ class Home extends Component {
 }
 }
 
+/*
+          <ToggleButtonGroup
+            value={alignment}
+            exclusive
+            onChange={handleAlignment}
+            aria-label="text alignment"
+          >
+            <ToggleButton value="left" aria-label="left aligned">
+              <FormatAlignLeftIcon />
+            </ToggleButton>
+            <ToggleButton value="center" aria-label="centered">
+              <FormatAlignCenterIcon />
+            </ToggleButton>
+            <ToggleButton value="right" aria-label="right aligned">
+              <FormatAlignRightIcon />
+            </ToggleButton>
+            <ToggleButton value="justify" aria-label="justified" disabled>
+              <FormatAlignJustifyIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
+*/
 export default Home;
