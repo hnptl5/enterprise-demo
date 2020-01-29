@@ -3,6 +3,7 @@ import {Box, Button, Container} from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
 // import MaterialTable from 'material-table';
 import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label, Text} from 'recharts';
+import HomeComponent from './HomeComponent';
 import './css/home.css';
 
 const data = [
@@ -28,6 +29,25 @@ const data = [
   }
 ];
 
+const messageData = [
+  {
+    name: "SMS",
+    value: 2000,
+    color: "warning"
+  },
+  {
+    name: "Emails",
+    value: 8000,
+    color: ""
+
+  },
+  {
+    name: "Print",
+    value: 4000,
+    color: "success"
+
+  }
+];
 
 const renderShape = props => {
 
@@ -102,53 +122,24 @@ class Home extends Component {
    
    render(){
     return (
-    <div >
+    <>
         <Row>
             <Col sm={4}  className=" ml-4 mt-3 sample pb-3">
-            <div className="row">
-                <div className="col-4 ml-1"> <b>Top Categories </b>
-                    {/* <h5 className="col-9 ml-2">  Top Categories </h5> */}
-                </div>
-                <div className="col-7 text-right"> This Month
-                    {/* <h5 className="text-right ml-2"> This Month </h5> */}
-                </div>
+            <div className="row no-gutters">
+                <div className="col-4 ml-1"> <b>Top Categories </b> </div>
+                <div className="col-7 text-right"> This Month </div>
             </div>
-            <Card className="mt-4">
-                <Card.Header>
-                    <div className="row no-gutters"> 
-                        <div className="ml-4 col-9"> SMS </div>
-                        <div className="text-right"> 2,000 </div> 
-                    </div>
 
-                    <div className="row no-gutters"> 
-                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
-                        <div className="ml-2 col-10"> <ProgressBar variant="warning" now={40} /></div>
-                    </div>
-                </Card.Header>
-                {/* <Card.Body variant="flush" className="row no-gutters"> </Card.Body> */}
-                <Card.Header>
-                    <div className="row no-gutters"> 
-                        <div className="ml-4 col-9"> Emails </div>
-                        <div className="text-right"> 8,000 </div> 
-                    </div>
-
-                    <div className="row no-gutters"> 
-                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
-                        <div className="ml-2 col-10"> <ProgressBar variant="" now={85} /></div>
-                    </div>
-                </Card.Header>
-
-                <Card.Header>
-                    <div className="row no-gutters"> 
-                        <div className="ml-4 col-9"> Print </div>
-                        <div className="text-right"> 1,000 </div> 
-                    </div>
-
-                    <div className="row no-gutters"> 
-                        <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
-                        <div className="ml-2 col-10"> <ProgressBar variant="success" now={15} /></div>
-                    </div>
-                </Card.Header>
+            <Card className="mt-3">
+              <Card.Body className="pt-0 pb-0">
+               <ListGroup variant="flush">
+                  {
+                    messageData.map(message => (
+                      <HomeComponent data={message} />
+                    ))
+                  }
+                </ListGroup>
+              </Card.Body>
             </Card>
 
             </Col>
@@ -176,15 +167,11 @@ class Home extends Component {
                     outerRadius={80} 
                     fill="blue"
                     onMouseEnter={this.onPieEnter}
-                    label
                     >       
                     
                        
-                       <Label  value={this.state.name} position="center">
-                       </Label>
-
-                    
-                    
+                       <Label  value={this.state.name} position="center" />
+    
                         {
                             data.map((entry, index) => (
 
@@ -209,7 +196,7 @@ class Home extends Component {
             </Col>
         </Row>
 
-        </div>
+        </>
     )
 }
 }

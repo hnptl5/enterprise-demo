@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import CustomizedButtons from '../components/common/Button';
 import AlertDialog from '../components/common/Popup';
 import CheckboxLabels from '../components/common/CheckBox';
-// import GroupedButtons from '../components/common/GroupedButtons';
 import CustomizedDividers from '../components/common/GroupedButtons';
 
 const useStyles = makeStyles(theme => ({
@@ -68,66 +67,86 @@ const Wrapper = styled.div`
 `;
 
 export default () => {
+
   const [applicationName, setApplicationName] = useState('');
-  const [applicationDate, setApplicationDate] = useState('');
+  const [applicationID, setApplicationID] = useState('');
   const [lobName, setLobName] = useState('');
   const [productSupported, setProductSupported] = useState('');
-
-  // const [chanelType, setChanelType] = useState('');
-  // const [chanelType, setChanelType] = useState('');
-  // const [chanelType, setChanelType] = useState('');
-  // const [chanelType, setChanelType] = useState('');
-
   const [email, setEmail] = useState(false);
   const [sms, setSMS] = useState(false);
   const [print, setPrint] = useState(false);
   const [push, setPush] = useState(false);
-
-  const [appplicationEmailId, setAppplicationEmailId] = useState('');
+  const [registrationDate, setRegistrationDate] = useState('');
+  const [applicationEmail, setApplicationEmail] = useState('');
   const [applicationContact, setApplicationContact] = useState('');
   const [rulesBaseComm, setRulesBasedComm] = useState('');
-  // const [registrationDate, setRegistrationDate] = useState('');
-  // const [registrationTime, setRegistrationTime] = useState('');
   const [expectedComValue, setExpectedComValue] = useState('');
   const [expectedComValuePerDay, setExpectedComValuePerDay] = useState('');
-  const [approverEmail, setApproverEmail] = useState('');
+  const [registrationTimestamp, setRegistrationTimestamp] = useState('');
   const [lobLeaderName, setLobLeaderName] = useState('');
   const [lobLeaderEmail, setLobLeaderEmail] = useState('');
   const [appLeaderName, setAppLeaderName] = useState('');
   const [appLeaderEmail, setAppLeaderEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [form, setForm] = useState('');
-
+  const [applicationDesc, setApplicationDesc] = useState('');
+  const [channelType1, setChannelType1] = useState('');
+  const [channelType2, setChannelType2] = useState('');
+  const [channelType3, setChannelType3] = useState('');
+  const [channelType4, setChannelType4] = useState('');
+  const [applicationApproverEmail, setApplicationApproverEmail] = useState('');
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
   const onSubmitForm = () => {
-    setOpenAlertDialog(true);
+        setOpenAlertDialog(true);
   };
 
   const handleReset = e => {
     e.preventDefault();
+
     setApplicationName('');
-    setApplicationDate('');
+    setApplicationID('');
     setLobName('');
     setRulesBasedComm('');
     setProductSupported('');
-    setAppplicationEmailId('');
+    setRegistrationDate('');
     setExpectedComValue('');
     setExpectedComValuePerDay('');
-    setApproverEmail('');
+    setRegistrationTimestamp('');
     setLobLeaderName('');
     setLobLeaderEmail('');
     setAppLeaderName('');
     setAppLeaderEmail('');
     setApplicationContact('');
     setUserName('');
+    setApplicationDesc('');
+    setApplicationEmail('');
+    setApplicationApproverEmail('');
+    setChannelType1('');
+    setChannelType2('');
+    setChannelType3('');
+    setChannelType4('');
   };
+
   return (
     <Wrapper>
       {openAlertDialog && <AlertDialog openAlert={openAlertDialog} />}
       <Form onSubmit={onSubmitForm} autoComplete="off">
         <div className="row rowPadding">
           <div className="col-md-4">
+
+            {/* <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Application ID"
+                type="text"
+                value={applicationID}
+                variant="outlined"
+                required
+                onChange={e => setApplicationID(e.target.value)}
+              />
+            </Form.Group> */}
+
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
@@ -143,12 +162,12 @@ export default () => {
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Application Date"
+                label="Application Description"
                 type="text"
-                value={applicationDate}
+                value={applicationDesc}
                 variant="outlined"
                 required
-                onChange={e => setApplicationDate(e.target.value)}
+                onChange={e => setApplicationDesc(e.target.value)}
               />
             </Form.Group>
 
@@ -179,12 +198,12 @@ export default () => {
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Application Email ID"
+                label="Application Email"
                 type="text"
-                value={appplicationEmailId}
+                value={applicationEmail}
                 variant="outlined"
                 required
-                onChange={e => setAppplicationEmailId(e.target.value)}
+                onChange={e => setApplicationEmail(e.target.value)}
               />
             </Form.Group>
 
@@ -200,17 +219,30 @@ export default () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
+            {/* <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
                 label="Rule Based Communication"
-                type="text"
+                type="text" //boolean
                 value={rulesBaseComm}
                 variant="outlined"
                 required
                 onChange={e => setRulesBasedComm(e.target.value)}
               />
-            </Form.Group>
+            </Form.Group> */}
+
+
+            {/* <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Registration Date"
+                type="text" //date
+                value={registrationDate}
+                variant="outlined"
+                required
+                onChange={e => setRegistrationDate(e.target.value)}
+              />
+            </Form.Group> */}
 
             <Form.Group controlId="formBasicEmail">
               <TextField
@@ -224,6 +256,21 @@ export default () => {
               />
             </Form.Group>
 
+            {/* <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Expected Comm Value per Day"
+                type="text"
+                value={expectedComValuePerDay}
+                variant="outlined"
+                required
+                onChange={e => setExpectedComValuePerDay(e.target.value)}
+              />
+            </Form.Group> */}
+          </div>
+
+          <div className="col-md-4">
+
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
@@ -235,26 +282,37 @@ export default () => {
                 onChange={e => setExpectedComValuePerDay(e.target.value)}
               />
             </Form.Group>
-          </div>
-          <div className="col-md-4">
+
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Appplication Approver Email"
-                type="text"
-                value={approverEmail}
+                label="Rule Based Communication"
+                type="text" //boolean
+                value={rulesBaseComm}
                 variant="outlined"
                 required
-                onChange={e => setApproverEmail(e.target.value)}
+                onChange={e => setRulesBasedComm(e.target.value)}
               />
             </Form.Group>
+{/* 
+            <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Registration Timestamp"
+                type="text"
+                value={registrationTimestamp}
+                variant="outlined"
+                required
+                onChange={e => setRegistrationTimestamp(e.target.value)}
+              />
+            </Form.Group> */}
 
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
                 label="Application LOB Leader name"
                 type="text"
-                value={lobLeaderEmail}
+                value={lobLeaderName}
                 variant="outlined"
                 required
                 onChange={e => setLobLeaderName(e.target.value)}
@@ -272,6 +330,19 @@ export default () => {
                 onChange={e => setLobLeaderEmail(e.target.value)}
               />
             </Form.Group>
+
+            <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Application Approver Email"
+                type="text"
+                value={applicationApproverEmail}
+                variant="outlined"
+                required
+                onChange={e => setApplicationApproverEmail(e.target.value)}
+              />
+            </Form.Group>
+
 
             <Form.Group controlId="formBasicEmail">
               <TextField
@@ -297,54 +368,55 @@ export default () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
+            {/* <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="User Name"
+                label="channel type 1"
                 type="text"
-                value={userName}
+                value={channelType1}
                 variant="outlined"
                 required
-                onChange={e => setUserName(e.target.value)}
+                onChange={e => setChannelType1(e.target.value)}
               />
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="User Name"
+                label="channel type 2"
                 type="text"
-                value={userName}
+                value={channelType2}
                 variant="outlined"
                 required
-                onChange={e => setUserName(e.target.value)}
+                onChange={e => setChannelType2(e.target.value)}
+              />
+            </Form.Group>
+
+                        <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="channel type 3"
+                type="text"
+                value={channelType3}
+                variant="outlined"
+                required
+                onChange={e => setChannelType3(e.target.value)}
               />
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="User Name"
+                label="channel type 4"
                 type="text"
-                value={userName}
+                value={channelType4}
                 variant="outlined"
                 required
-                onChange={e => setUserName(e.target.value)}
+                onChange={e => setChannelType4(e.target.value)}
               />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="User Name"
-                type="text"
-                value={userName}
-                variant="outlined"
-                required
-                onChange={e => setUserName(e.target.value)}
-              />
-            </Form.Group>
+            </Form.Group> */}
           </div>
+          
           <div className="col-md-4">
             <h5>Select applicable communication types</h5>
             <div className="checkBoxSectionDiv">
@@ -378,7 +450,7 @@ export default () => {
       <Row>
         <Col sm={5} className="">
         <div className="buttonSpace2">
-              <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
+              <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" size="large" />
         </div>
         </Col>
         <Col sm={2}>
