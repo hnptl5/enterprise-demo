@@ -253,13 +253,12 @@ class Home extends Component {
                     <Line type="natural" dataKey="pv" stroke="white" strokeWidth= {10} dot={false}/>
                 </LineChart>
 
-          
-                  <ToggleButtonGroup
+                <ToggleButtonGroup
                     value
                     exclusive
                     onChange
                     aria-label="text alignment"
-                    className="ml-5 mt-5"
+                    className="toggle"
                   >
                       <ToggleButton value="left" aria-label="left aligned">
                       Today
@@ -271,7 +270,7 @@ class Home extends Component {
                       Month
                       </ToggleButton>
                 </ToggleButtonGroup>
-            
+                {/* </div> */}
             </Col>
         </Row>
 
