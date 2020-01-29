@@ -11,20 +11,23 @@ const data = [
     name: "Lending",
     content: "Use Cases 1 YTD 2,300",
     value: 4,
-    index: 1
+    index: 1,
+    color: "green"
   },
   {
     name: "Online Banking",
     content: "Use Cases 1 YTD 2,300",
     value: 2,
-    index: 2
+    index: 2,
+    color: "blue"
 
   },
   {
     name: "Fraud",
     content: "Use Cases 1 YTD 2,300",
     value: 1,
-    index: 3
+    index: 3,
+    color: "red"
 
   }
 ];
@@ -115,6 +118,7 @@ class Home extends Component {
   };
 
   onPieEnter = (data, index) => {
+    debugger;
     this.setState({
       activeIndex: index,
       name: data.name,
@@ -126,8 +130,8 @@ class Home extends Component {
    render(){
     return (
     <>
-        <Row>
-            <Col sm={4}  className=" ml-4 mt-3 sample pb-3">
+        <Row className="ml-2">
+            <Col sm={4}  className="mt-3 sample pb-3">
             <div className="row no-gutters">
                 <div className="col-4 ml-1"> <b>Top Categories </b> </div>
                 <div className="col-7 text-right"> This Month </div>
@@ -168,7 +172,7 @@ class Home extends Component {
                     cy="50%" 
                     innerRadius={70} 
                     outerRadius={80} 
-                    fill="blue"
+                    // fill="red"
                     onMouseEnter={this.onPieEnter}
                     >       
                     
@@ -180,7 +184,7 @@ class Home extends Component {
 
                                 <Cell 
                                     key={`cell-${index}`} 
-                                    fill="blue"                                    
+                                    fill= {entry.color}                                    
                                 />
 
                                  )
@@ -194,8 +198,8 @@ class Home extends Component {
             </ResponsiveContainer>
             </Col>
 
-            <Col sm={3}>
-                <h3 className="text-center mt-4"> Graph </h3>
+            <Col sm={4} className="sample mt-3">
+                <h5 className="text-center mt-4"> <b>Outbound Communication Volumes </b> </h5>
             </Col>
         </Row>
 
