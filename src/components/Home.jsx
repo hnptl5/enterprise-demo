@@ -33,18 +33,21 @@ const messageData = [
   {
     name: "SMS",
     value: 2000,
-    color: "warning"
+    color: "warning",
+    bar: 23
   },
   {
     name: "Emails",
     value: 8000,
-    color: ""
+    color: "",
+    bar: 65
 
   },
   {
     name: "Print",
     value: 4000,
-    color: "success"
+    color: "success",
+    bar: 41
 
   }
 ];

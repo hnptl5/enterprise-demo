@@ -90,10 +90,6 @@ export default () => {
   const [userName, setUserName] = useState('');
   const [form, setForm] = useState('');
   const [applicationDesc, setApplicationDesc] = useState('');
-  const [channelType1, setChannelType1] = useState('');
-  const [channelType2, setChannelType2] = useState('');
-  const [channelType3, setChannelType3] = useState('');
-  const [channelType4, setChannelType4] = useState('');
   const [applicationApproverEmail, setApplicationApproverEmail] = useState('');
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
@@ -122,10 +118,6 @@ export default () => {
     setApplicationDesc('');
     setApplicationEmail('');
     setApplicationApproverEmail('');
-    setChannelType1('');
-    setChannelType2('');
-    setChannelType3('');
-    setChannelType4('');
   };
 
   return (

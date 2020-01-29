@@ -15,7 +15,7 @@ console.log(data);
 
     <div className="row no-gutters mb-5"> 
         <div className="mb-2 col=2"> <Image src="holder.js/171x180" roundedCircle /> </div>
-        <div className="ml-2 col-10"> <ProgressBar variant={data.color} now={40} /></div>
+        <div className="ml-2 col-10"> <ProgressBar variant={data.color} now={data.bar} /></div>
     </div>
     </ListGroup.Item>
     </>
