@@ -260,7 +260,7 @@ class Home extends Component {
                 <ToggleButtonGroup
                     value
                     exclusive
-                    onChange
+                    // onChange
                     aria-label="text alignment"
                     className="toggle"
                   >

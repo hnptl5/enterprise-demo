@@ -211,6 +211,18 @@ export default () => {
               />
             </Form.Group>
 
+            <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Rule Based Communication"
+                type="text" //boolean
+                value={rulesBaseComm}
+                variant="outlined"
+                required
+                onChange={e => setRulesBasedComm(e.target.value)}
+              />
+            </Form.Group>
+
             {/* <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
@@ -236,10 +248,15 @@ export default () => {
               />
             </Form.Group> */}
 
+          </div>
+          
+
+          <div className="col-md-4">
+
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Expected Comm Value"
+                label="Expected Comm Volumne"
                 type="text"
                 value={expectedComValue}
                 variant="outlined"
@@ -248,25 +265,10 @@ export default () => {
               />
             </Form.Group>
 
-            {/* <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="Expected Comm Value per Day"
-                type="text"
-                value={expectedComValuePerDay}
-                variant="outlined"
-                required
-                onChange={e => setExpectedComValuePerDay(e.target.value)}
-              />
-            </Form.Group> */}
-          </div>
-
-          <div className="col-md-4">
-
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Expected Comm Value per Day"
+                label="Expected Comm Volumne per Day"
                 type="text"
                 value={expectedComValuePerDay}
                 variant="outlined"
@@ -275,17 +277,6 @@ export default () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="Rule Based Communication"
-                type="text" //boolean
-                value={rulesBaseComm}
-                variant="outlined"
-                required
-                onChange={e => setRulesBasedComm(e.target.value)}
-              />
-            </Form.Group>
 {/* 
             <Form.Group controlId="formBasicEmail">
               <TextField
@@ -298,6 +289,18 @@ export default () => {
                 onChange={e => setRegistrationTimestamp(e.target.value)}
               />
             </Form.Group> */}
+
+            <Form.Group controlId="formBasicEmail">
+              <TextField
+                id="outlined-email"
+                label="Application Approver Email"
+                type="text"
+                value={applicationApproverEmail}
+                variant="outlined"
+                required
+                onChange={e => setApplicationApproverEmail(e.target.value)}
+              />
+            </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
               <TextField
@@ -326,19 +329,6 @@ export default () => {
             <Form.Group controlId="formBasicEmail">
               <TextField
                 id="outlined-email"
-                label="Application Approver Email"
-                type="text"
-                value={applicationApproverEmail}
-                variant="outlined"
-                required
-                onChange={e => setApplicationApproverEmail(e.target.value)}
-              />
-            </Form.Group>
-
-
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
                 label="Application Leader Name"
                 type="text"
                 value={appLeaderName}
@@ -360,53 +350,6 @@ export default () => {
               />
             </Form.Group>
 
-            {/* <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="channel type 1"
-                type="text"
-                value={channelType1}
-                variant="outlined"
-                required
-                onChange={e => setChannelType1(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="channel type 2"
-                type="text"
-                value={channelType2}
-                variant="outlined"
-                required
-                onChange={e => setChannelType2(e.target.value)}
-              />
-            </Form.Group>
-
-                        <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="channel type 3"
-                type="text"
-                value={channelType3}
-                variant="outlined"
-                required
-                onChange={e => setChannelType3(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="channel type 4"
-                type="text"
-                value={channelType4}
-                variant="outlined"
-                required
-                onChange={e => setChannelType4(e.target.value)}
-              />
-            </Form.Group> */}
           </div>
           
           <div className="col-md-4">
