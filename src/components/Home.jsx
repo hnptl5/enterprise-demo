@@ -186,18 +186,13 @@ class Home extends Component {
                 <div className="col-4 ml-1"> <b>Top Categories </b> </div>
                 <div className="col-7 text-right"> This Month </div>
             </div>
-
-            <Card className="mt-3">
-              <Card.Body className="pt-0 pb-0">
-               <ListGroup variant="flush">
+            
                   {
                     messageData.map(message => (
                       <HomeComponent data={message} />
                     ))
                   }
-                </ListGroup>
-              </Card.Body>
-            </Card>
+
 
             </Col>
 
