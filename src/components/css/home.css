@@ -12,3 +12,10 @@
     margin-left: 120px;
     margin-top: 60px;
 }
+
+.dot{
+    max-width: 20px;
+    height: 10px;
+    position: relative;
+    /* margin-right: 15px; */
+}

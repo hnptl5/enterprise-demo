@@ -38,20 +38,25 @@ const messageData = [
     name: "SMS",
     value: 2000,
     color: "warning",
-    bar: 23
+    bar: 23,
+    dot: "orange"
+
   },
   {
     name: "Emails",
     value: 8000,
     color: "",
-    bar: 65
+    bar: 65,
+    dot: "blue"
+
 
   },
   {
     name: "Print",
     value: 4000,
     color: "success",
-    bar: 41
+    bar: 41,
+    dot: "purple"
 
   }
 ];
@@ -164,7 +169,6 @@ class Home extends Component {
   };
 
   onPieEnter = (data, index) => {
-    debugger;
     this.setState({
       activeIndex: index,
       name: data.name,
