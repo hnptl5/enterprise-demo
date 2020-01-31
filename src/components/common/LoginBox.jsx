@@ -3,7 +3,14 @@ import styled from 'styled-components';
 import { Form, Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import CustomizedButtons from '../common/Button'
+import CustomizedButtons from '../common/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import axios from 'axios';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props}/> 
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,20 +58,66 @@ const Wrapper = styled.div`
 const LoginBox = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [open, setOpen] = React.useState(false);
+  const [error, setError] = React.useState(false);
   const classes = useStyles();
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    const url = 'http://localhost:8080/users/login';
+    const userData = {
+      email: email,
+      password: password
+    }
+
+    console.log(userData);
+    
+
+    axios.post(url, userData).then((res) => {
+      if(res.data) {
+        setOpen(true);
+        console.log('logged in success full');
+        window.location.href = "http://localhost:3000/main";
+      } else {
+        console.log('login is not successfull');
+        setError(true);
+      }
+    }).catch((e) => {
+      console.log('Something went wrong');
+    })
+  }
+
+  const handleClose = (event, reason) => {
+    if(reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    setError(false);
+  }
   return (
     <Wrapper>
-      <Form autoComplete="off">
+      <Snackbar onClose={handleClose} open={open} autoHideDuration={2000}>
+        <Alert onClose={handleClose} severity="success">
+          Sucessfully logged In!
+        </Alert>
+      </Snackbar>
+      <Snackbar onClose={handleClose} open={error} autoHideDuration={2000}>
+        <Alert onClose={handleClose} severity="error">
+          Invalid Credentials!
+        </Alert>
+      </Snackbar>
+      <Form autoComplete="off" onSubmit={onSubmitForm}>
         <Form.Group controlId="formBasicEmail">
-          <TextField id="outlined-email" label="username" type="search" variant="outlined" required />
+          <TextField id="outlined-email" label="email" type="search" variant="outlined" required onChange={(e) => setEmail(e.target.value)} />
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
-          <TextField id="outlined-password" label="password" type="search" variant="outlined" required />
+          <TextField id="outlined-password" label="password" type="search" variant="outlined" required onChange={(e) => setPassword(e.target.value) } />
         </Form.Group>
 
         <div className="buttonSpace">
-          <CustomizedButtons value="Sign In" OnClick={(e) => { }} />
+          <CustomizedButtons value="Sign In" type="submit" OnClick={(e) => { }} />
           <CustomizedButtons value="Forgot Password" OnClick={(e) => { }} />
           <a href="/signup"><CustomizedButtons value="Sign Up" OnClick={(e) => { }} /> </a>
         </div>
