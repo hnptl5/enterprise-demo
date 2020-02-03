@@ -77,6 +77,7 @@ const LoginBox = () => {
       if(res.data) {
         setOpen(true);
         console.log('logged in success full');
+        window.localStorage.setItem('loginDetails', res.data.name)
         window.location.href = "http://localhost:3000/main";
       } else {
         console.log('login is not successfull');

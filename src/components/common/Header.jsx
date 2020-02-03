@@ -90,6 +90,8 @@ const languageOption = ['EN', 'US', 'JPN', 'ARB'];
 const MainHeader = () => {
   const classes = useStyles();
   const path = window.location.pathname;
+
+  const loginName = window.localStorage.getItem('loginDetails') || 'Guest'
   return (
     <Wrapper>
       <div>
@@ -114,7 +116,7 @@ const MainHeader = () => {
           >
             <Avatar alt="Remy Sharp" src={avatar} className={classes.large} />
           </StyledBadge>
-          <span className="logged-in-user">Hani</span>
+          <span className="logged-in-user">{ loginName}</span>
         </div>
       </div>}
       {
