@@ -16,6 +16,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './assets/styleSheet';
 import MainPage from './pages/MainPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RequestApproval from './components/requestApprove';
 
 toastr.options = {
     "closeButton": false,
@@ -47,6 +48,7 @@ const IndexApp = () => {
                         <Route path='/home' exact component={HomePage} />
                         <Route path='/signup' exact component={Signup} />
                         <Route path='/tabs' exact component={IconLabelTabs} />
+                        <Route path='/requestApprove' exact component={RequestApproval} />
                     </Switch>
                     <Footer />
                 </Router>
