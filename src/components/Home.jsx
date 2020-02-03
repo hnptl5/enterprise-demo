@@ -63,46 +63,40 @@ const messageData = [
 
 const graphData = [
   {
-    "name": "Page A",
-    "uv": 4000,
-    "pv": 2400,
-    "amt": 2400
+
+    pv: 2400,
+    amt: 2400
   },
+
   {
-    "name": "Page B",
-    "uv": 3000,
-    "pv": 1398,
-    "amt": 2210
+
+    pv: 1398,
+    amt: 2210
   },
+
   {
-    "name": "Page C",
-    "uv": 2000,
-    "pv": 9800,
-    "amt": 2290
+    pv: 9800,
+    amt: 2290
   },
+
   {
-    "name": "Page D",
-    "uv": 2780,
-    "pv": 3908,
-    "amt": 2000
+    pv: 3908,
+    amt: 2000
   },
+
   {
-    "name": "Page E",
-    "uv": 1890,
-    "pv": 4800,
-    "amt": 2181
+    pv: 4800,
+    amt: 2181
   },
+
   {
-    "name": "Page F",
-    "uv": 2390,
-    "pv": 3800,
-    "amt": 2500
+    pv: 3800,
+    amt: 2500
   },
+
   {
-    "name": "Page G",
-    "uv": 3490,
-    "pv": 4300,
-    "amt": 2100
+    pv: 4300,
+    amt: 2100
   }
 ]
 
@@ -165,7 +159,8 @@ class Home extends Component {
   state = {
     activeIndex: 0,
     name: 'Lending',
-    content: ''
+    content: '',
+    pv: 9800
   };
 
   onPieEnter = (data, index) => {
@@ -174,8 +169,18 @@ class Home extends Component {
       name: data.name,
       content: data.content
     });
-
   };
+
+  toggleButtons = (data, index) => {
+    if(index === "center"){}
+    if(index === "left"){}
+    if(index === "right"){
+      // this.setState({
+      //   pv
+      // });
+    }
+    debugger;
+  }
    
    render(){
     return (
@@ -183,8 +188,8 @@ class Home extends Component {
         <Row className="ml-2">
             <Col sm={4}  className="mt-3 sample pb-3">
             <div className="row no-gutters">
-                <div className="col-4 ml-1"> <b>Top Categories </b> </div>
-                <div className="col-7 text-right"> This Month </div>
+                <div className="col-5 ml-3 category-font"> <b>Top Categories </b> </div>
+                <div className="col-6 text-right"> This Month </div>
             </div>
             
                   {
@@ -222,7 +227,7 @@ class Home extends Component {
                     >       
                     
                        
-                       <Label  value={this.state.name} position="center" />
+                       <Label  value={this.state.name}  position="center"/>
     
                         {
                             data.map((entry, index) => (
@@ -246,8 +251,12 @@ class Home extends Component {
             <Col sm={4} className="sample mt-3">
                 <h5 className="text-center mt-4"> <b>Outbound Communication Volumes </b> </h5>
 
-                <LineChart width={425} height={200} data={graphData}
-                    margin={{ top: 90, right: 30, left: 50, bottom: 5 }}>
+                <LineChart 
+                  width={425} 
+                  height={200} 
+                  data={graphData}
+                  margin={{ top: 90, right: 30, left: 50, bottom: 5 }}>
+
                     <Tooltip />
                     <Line type="natural" dataKey="pv" stroke="white" strokeWidth= {10} dot={false}/>
                 </LineChart>
@@ -255,21 +264,25 @@ class Home extends Component {
                 <ToggleButtonGroup
                     value
                     exclusive
-                    // onChange
+                    data={graphData}
+                    onChange ={this.toggleButtons}
                     aria-label="text alignment"
                     className="toggle"
                   >
+                      
                       <ToggleButton value="left" aria-label="left aligned">
-                      Today
+                         Today
                       </ToggleButton>
+ 
                       <ToggleButton value="center" aria-label="centered">
-                      Week
+                          Week
                       </ToggleButton>
+
                       <ToggleButton value="right" aria-label="right aligned">
-                      Month
+                          Month
                       </ToggleButton>
+                                     
                 </ToggleButtonGroup>
-                {/* </div> */}
             </Col>
         </Row>
 
@@ -277,26 +290,4 @@ class Home extends Component {
     )
 }
 }
-
-/*
-          <ToggleButtonGroup
-            value={alignment}
-            exclusive
-            onChange={handleAlignment}
-            aria-label="text alignment"
-          >
-            <ToggleButton value="left" aria-label="left aligned">
-              <FormatAlignLeftIcon />
-            </ToggleButton>
-            <ToggleButton value="center" aria-label="centered">
-              <FormatAlignCenterIcon />
-            </ToggleButton>
-            <ToggleButton value="right" aria-label="right aligned">
-              <FormatAlignRightIcon />
-            </ToggleButton>
-            <ToggleButton value="justify" aria-label="justified" disabled>
-              <FormatAlignJustifyIcon />
-            </ToggleButton>
-          </ToggleButtonGroup>
-*/
 export default Home;

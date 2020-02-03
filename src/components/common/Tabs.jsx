@@ -45,10 +45,6 @@ const Wrapper = styled.div`
  }
 `;
 
-
-
-
-
 export default function IconLabelTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -70,7 +66,7 @@ export default function IconLabelTabs() {
           <Tab icon={<HomeRoundedIcon />} label="Home" value={0} />
           <Tab icon={<ThumbsUpDownRoundedIcon />} label="Onboarding" value={1} />
           <Tab icon={<GavelRoundedIcon />} label="Rules" value={2} />
-          <Tab icon={<ComputerRoundedIcon />} label="Colleague Dashboard" value={3} className={classes.tabStyle} />
+          <Tab icon={<ComputerRoundedIcon />} label="Colleague Dashboard" value={3} className={classes.tabStyle}/>
         </Tabs>
         <SwipeableViews index={value} onChangeIndex={handleChange}>
           <div><Home /></div>

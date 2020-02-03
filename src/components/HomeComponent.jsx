@@ -10,8 +10,8 @@ const HomeComponent = ({data}) => {
             <ListGroup variant="flush">
                 <ListGroup.Item>
                     <div className="row no-gutters"> 
-                        <div className="col-9 ml-5 pl-4"> {data.name} </div>
-                        <div className=""> {data.value}</div> 
+                        <div className="col-8 ml-5 pl-4"> {data.name} </div>
+                        <div className="text-right"> {data.value}</div> 
                     </div>
                     
                     <div className="row no-gutters mb-3"> 
