@@ -73,7 +73,7 @@ export default function IconLabelTabs() {
           <div><OnBoarding /></div>
           <div>Rules Component</div>
           <div>Dashboard Colleague Component</div>
-        </SwipeableViews>
+          </SwipeableViews>
       </Paper>
       </Wrapper>
   )

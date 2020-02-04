@@ -1,11 +1,48 @@
 import React, {Component} from 'react';
-import {Box, Button, Container} from '@material-ui/core';
+import {Box, Button, Container, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
 // import MaterialTable from 'material-table';
 import {PieChart, Pie, ResponsiveContainer, Cell, Sector, Label, Text, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from 'recharts';
 import HomeComponent from './HomeComponent';
 import {ToggleButton, ToggleButtonGroup }  from '@material-ui/lab';
 import './css/home.css';
+
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+}))(TableRow);
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+});
+
+function createData(name, useCase, status) {
+  return { name, useCase, status };
+}
+
+const rows = [
+  createData('Zoosk', 159, "Pending"),
+  createData('Online Banking', 237, "Complete"),
+  createData('Lending', 237, "Complete"),
+
+];
 
 const data = [
   {
@@ -179,13 +216,14 @@ class Home extends Component {
       //   pv
       // });
     }
-    debugger;
   }
    
    render(){
     return (
     <>
-        <Row className="ml-2">
+            <ResponsiveContainer width="100%" height={300}>
+
+        <Row className="ml-1">
             <Col sm={4}  className="mt-3 sample pb-3">
             <div className="row no-gutters">
                 <div className="col-5 ml-3 category-font"> <b>Top Categories </b> </div>
@@ -202,7 +240,7 @@ class Home extends Component {
             </Col>
 
             <Col sm={4}>
-            <ResponsiveContainer>
+            {/* <ResponsiveContainer> */}
             {/* <Card style={{ height: "300px"}}> */}
             <Card className="mt-3">
 
@@ -245,7 +283,7 @@ class Home extends Component {
                 </PieChart>
               </Card.Body>
             </Card>
-            </ResponsiveContainer>
+            {/* </ResponsiveContainer> */}
             </Col>
 
             <Col sm={4} className="sample mt-3">
@@ -284,7 +322,30 @@ class Home extends Component {
                                      
                 </ToggleButtonGroup>
             </Col>
+            <Col sm={4}>
+    <TableContainer component={Paper}>
+      <Table className="mt-2 mb-5" aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>App</StyledTableCell>
+            <StyledTableCell>USE Case</StyledTableCell>
+            <StyledTableCell>Status</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map(row => (
+            <StyledTableRow key={row.name}>
+              <StyledTableCell component="th" scope="row">{row.name}</StyledTableCell>
+              <StyledTableCell>{row.useCase}</StyledTableCell>
+              <a href="/case"><StyledTableCell>{row.status}</StyledTableCell></a>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+      </Col>
         </Row>
+            </ResponsiveContainer>
 
         </>
     )
