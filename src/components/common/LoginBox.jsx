@@ -7,6 +7,10 @@ import CustomizedButtons from '../common/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import axios from 'axios';
 import MuiAlert from '@material-ui/lab/Alert';
+import {connect} from "react-redux";
+import {withRouter } from "react-router-dom";
+
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props}/> 
@@ -60,7 +64,10 @@ const LoginBox = () => {
   const [password, setPassword] = useState('');
   const [open, setOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const classes = useStyles();
+  // const [storedData, setStoredData] = React.useState('')
+  const classes = useStyles('');
+
+  let storedData;
 
   const onSubmitForm = (e) => {
     e.preventDefault();
@@ -69,11 +76,10 @@ const LoginBox = () => {
       email: email,
       password: password
     }
-
-    console.log(userData);
     
-
     axios.post(url, userData).then((res) => {
+        // props.data = res.data;
+        // debugger;
       if(res.data) {
         setOpen(true);
         console.log('logged in success full');
