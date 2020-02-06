@@ -8,10 +8,18 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+
 
 const columns = [
-  { id: 'name', label: 'USE Case', minWidth: 170 },
-  { id: 'code', label: 'Feature', minWidth: 100 },
+  { id: 'name', label: 'Feature', minWidth: 100 },
+  { id: 'code', label: 'Template', minWidth: 170 },
   {
     id: 'population',
     label: 'Status',
@@ -26,28 +34,7 @@ function createData(name, code, population, size) {
 }
 
 const rows = [
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete")
+  createData('Sample', 'Sample', "Incomplete"),
 ];
 
 const useStyles = makeStyles({
@@ -59,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function UseCase() {
+export default function Feature() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -74,7 +61,25 @@ export default function UseCase() {
   };
 
   return (
+
+      <>
+            <List component="nav" aria-label="main mailbox folders" className="mb-5">
+        <ListItem button>
+          {/* <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon> */}
+          <ListItemText primary="User: Zerell" />
+        </ListItem>
+        <ListItem button>
+          {/* <ListItemIcon>
+            <DraftsIcon />
+          </ListItemIcon> */}
+          <ListItemText primary="Feature: Sample" />
+        </ListItem>
+      </List>
+      
     <Paper className={classes.root}>
+
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -98,7 +103,7 @@ export default function UseCase() {
                     const value = row[column.id];
                     return (
                       <TableCell key={column.id} align={column.align}>
-                        <a href="/feature">{column.format && typeof value === 'number' ? column.format(value) : value}</a>
+                        {column.format && typeof value === 'number' ? column.format(value) : value}
                       </TableCell>
                     );
                   })}
@@ -108,16 +113,7 @@ export default function UseCase() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
     </Paper>
+    </>
   );
 }
-

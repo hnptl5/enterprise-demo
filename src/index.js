@@ -12,6 +12,7 @@ import Signup from './pages/SIgnupPage';
 import UseCase from './pages/UseCase'
 import Footer from './components/common/Footer';
 import IconLabelTabs from './components/common/Tabs';
+import Feature from './pages/Feature';
 import toastr from 'toastr';
 import { ThemeProvider } from 'styled-components';
 import theme from './assets/styleSheet';
@@ -49,6 +50,7 @@ const IndexApp = () => {
                         <Route path='/signup' exact component={Signup} />
                         <Route path='/tabs' exact component={IconLabelTabs} />
                         <Route path='/case' exact component={UseCase} />
+                        <Route path='/feature' exact component={Feature} />
                     </Switch>
                     <Footer />
                 </Router>
