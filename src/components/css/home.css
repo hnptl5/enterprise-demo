@@ -26,3 +26,16 @@
     font-size: 21px;
     font-family: Arial;
 }
+
+.outbound-position{
+    margin-left: 200px;
+    margin-top: 15px;
+}
+
+.tracker{
+    left: 255px;
+}
+
+.case-table{
+    margin-left: 70px;
+}

@@ -239,7 +239,7 @@ class Home extends Component {
 
             </Col>
 
-            <Col sm={4} className="sample mt-3 ml-5">
+            <Col sm={4} className="sample outbound-position">
                 <h5 className="text-center mt-4"> <b>Outbound Communication Volumes </b> </h5>
 
                 <LineChart 
@@ -278,11 +278,11 @@ class Home extends Component {
         </Row>
             </ResponsiveContainer>
 
-            <ResponsiveContainer width="100%">
+            
       <Row>
-            <Col sm={4} lg={5}>
-    <TableContainer component={Paper} className="ml-5">
-      <Table className="mt-2" aria-label="customized table">
+            <Col sm={4}>
+    <TableContainer component={Paper} className="case-table">
+      <Table className="" aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>App</StyledTableCell>
@@ -305,14 +305,14 @@ class Home extends Component {
 
 
         <Col sm={4}>
-            <Card className="mt-2 ml-5">
+            <Card className="tracker">
 
             <Card.Header className="text-center"> 
                 <h3> Use Case Tracker </h3>
             </Card.Header>
 
             <Card.Body>
-              <PieChart width={350} height={250}>
+              <PieChart width={350} height={200}>
                 <Pie 
                     data={data} 
                     activeIndex = {this.state.activeIndex}
@@ -343,7 +343,6 @@ class Home extends Component {
             </Card>
             </Col>
       </Row>
-            </ResponsiveContainer>
 
         </>
     )
