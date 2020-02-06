@@ -221,10 +221,10 @@ class Home extends Component {
    render(){
     return (
     <>
-            <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={450}>
 
-        <Row className="ml-1">
-            <Col sm={4}  className="mt-3 sample pb-3">
+        <Row className="ml-1 mt-2">
+            <Col sm={4}  className="mt-3 sample pb-3 ml-5">
             <div className="row no-gutters">
                 <div className="col-5 ml-3 category-font"> <b>Top Categories </b> </div>
                 <div className="col-6 text-right"> This Month </div>
@@ -232,61 +232,14 @@ class Home extends Component {
             
                   {
                     messageData.map(message => (
-                      <HomeComponent data={message} />
+                      <HomeComponent data={message}/>
                     ))
                   }
 
 
             </Col>
 
-            <Col sm={4}>
-            {/* <ResponsiveContainer> */}
-            {/* <Card style={{ height: "300px"}}> */}
-            <Card className="mt-3">
-
-            <Card.Header className="text-center"> 
-                <h3> Use Case Tracker </h3>
-            </Card.Header>
-
-            <Card.Body>
-              <PieChart width={350} height={250}>
-                <Pie 
-                    data={data} 
-                    activeIndex = {this.state.activeIndex}
-                    activeShape={renderShape}
-                    dataKey="value" 
-                    nameKey="name" 
-                    cx="50%" 
-                    cy="50%" 
-                    innerRadius={70} 
-                    outerRadius={80} 
-                    // fill="red"
-                    onMouseEnter={this.onPieEnter}
-                    >       
-                    
-                       
-                       <Label  value={this.state.name}  position="center"/>
-    
-                        {
-                            data.map((entry, index) => (
-
-                                <Cell 
-                                    key={`cell-${index}`} 
-                                    fill= {entry.color}                                    
-                                />
-
-                                 )
-                            )
-                        }
-
-                    </Pie>
-                </PieChart>
-              </Card.Body>
-            </Card>
-            {/* </ResponsiveContainer> */}
-            </Col>
-
-            <Col sm={4} className="sample mt-3">
+            <Col sm={4} className="sample mt-3 ml-5">
                 <h5 className="text-center mt-4"> <b>Outbound Communication Volumes </b> </h5>
 
                 <LineChart 
@@ -322,9 +275,14 @@ class Home extends Component {
                                      
                 </ToggleButtonGroup>
             </Col>
-            <Col sm={4}>
-    <TableContainer component={Paper}>
-      <Table className="mt-2 mb-5" aria-label="customized table">
+        </Row>
+            </ResponsiveContainer>
+
+            <ResponsiveContainer width="100%">
+      <Row>
+            <Col sm={4} lg={5}>
+    <TableContainer component={Paper} className="ml-5">
+      <Table className="mt-2" aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>App</StyledTableCell>
@@ -344,7 +302,47 @@ class Home extends Component {
       </Table>
     </TableContainer>
       </Col>
-        </Row>
+
+
+        <Col sm={4}>
+            <Card className="mt-2 ml-5">
+
+            <Card.Header className="text-center"> 
+                <h3> Use Case Tracker </h3>
+            </Card.Header>
+
+            <Card.Body>
+              <PieChart width={350} height={250}>
+                <Pie 
+                    data={data} 
+                    activeIndex = {this.state.activeIndex}
+                    activeShape={renderShape}
+                    dataKey="value" 
+                    nameKey="name" 
+                    cx="50%" 
+                    cy="50%" 
+                    innerRadius={70} 
+                    outerRadius={80} 
+                    onMouseEnter={this.onPieEnter}
+                    >       
+                    
+                       <Label  value={this.state.name}  position="center"/>
+                        {
+                            data.map((entry, index) => (
+
+                                <Cell 
+                                    key={`cell-${index}`} 
+                                    fill= {entry.color}                                    
+                                />
+                                 )
+                            )
+                        }
+                    </Pie>
+                </PieChart>
+              </Card.Body>
+            </Card>
+            </Col>
+      </Row>
             </ResponsiveContainer>
 
         </>

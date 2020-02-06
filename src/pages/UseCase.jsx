@@ -8,6 +8,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 const columns = [
   { id: 'name', label: 'USE Case', minWidth: 170 },
@@ -74,6 +83,23 @@ export default function UseCase() {
   };
 
   return (
+
+            <>
+            <List component="nav" aria-label="main mailbox folders" className="mb-3">
+        <ListItem button>
+          <ListItemIcon>
+            <PermIdentityIcon />
+          </ListItemIcon>
+          <ListItemText > <b>User</b>: Zerell</ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <BusinessCenterIcon />
+          </ListItemIcon>
+          <ListItemText > <b>Use Case</b>: Use Case</ListItemText>
+        </ListItem>
+      </List>
+
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -116,8 +142,11 @@ export default function UseCase() {
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
+        className="mb-5"
       />
     </Paper>
+
+ </>
   );
 }
 

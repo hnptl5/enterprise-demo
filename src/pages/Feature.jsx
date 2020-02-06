@@ -15,6 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 
 const columns = [
@@ -65,16 +67,16 @@ export default function Feature() {
       <>
             <List component="nav" aria-label="main mailbox folders" className="mb-5">
         <ListItem button>
-          {/* <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon> */}
-          <ListItemText primary="User: Zerell" />
+          <ListItemIcon>
+            <PermIdentityIcon />
+          </ListItemIcon>
+          <ListItemText > <b>User</b>: Zerell</ListItemText>
         </ListItem>
         <ListItem button>
-          {/* <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon> */}
-          <ListItemText primary="Feature: Sample" />
+          <ListItemIcon>
+            <BusinessCenterIcon />
+          </ListItemIcon>
+          <ListItemText > <b>Feature</b>: Sample</ListItemText>
         </ListItem>
       </List>
       
