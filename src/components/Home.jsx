@@ -99,51 +99,37 @@ const messageData = [
   }
 ];
 
-const graphData = [
+let graphData = [
   {
-
-    pv: 2400,
-    amt: 2400
+    pv: 2400
   },
 
   {
-
-    pv: 1398,
-    amt: 2210
+    pv: 1398
   },
 
   {
-    pv: 9800,
-    amt: 2290
+    pv: 9800
   },
 
   {
-    pv: 3908,
-    amt: 2000
+    pv: 3908
   },
 
   {
-    pv: 4800,
-    amt: 2181
+    pv: 4800
   },
 
   {
-    pv: 3800,
-    amt: 2500
+    pv: 3800
   },
 
   {
-    pv: 4300,
-    amt: 2100
+    pv: 4300
   }
 ]
 
 const updateGraph = (graphData) => {
-  // daily(graphData);
-  // weekly(graphData);
-  // monthly(graphData);
-
-  // return graphData;
 }
 
 
@@ -207,7 +193,7 @@ class Home extends Component {
     activeIndex: 0,
     name: 'Lending',
     content: '',
-    pv: 9800
+    graphData: [{}]
   };
 
   onPieEnter = (data, index) => {
@@ -219,13 +205,22 @@ class Home extends Component {
   };
 
   toggleButtons = (data, index) => {
-    if(index === "center"){}
-    if(index === "left"){}
-    if(index === "right"){
-      // this.setState({
-      //   pv
-      // });
+
+    if(index === "left"){
+      graphData = [{pv: 1200}, {pv: 800},{pv: 1},{pv: 3000},{pv: 2600},{pv: 2800}, {pv: 3400}]
+      this.setState({graphData: graphData});
     }
+
+    if(index === "center"){
+      graphData = [{pv: 900}, {pv: 1200},{pv: 70},{pv: 1600},{pv: 2200},{pv: 1800}, {pv: 3000}]
+      this.setState({graphData: graphData});
+    }
+    
+     if(index === "right"){
+      graphData = [{pv: 2000}, {pv: 1500},{pv: 1100},{pv: 1800},{pv: 900},{pv: 600}, {pv: 500}]
+      this.setState({graphData: graphData});
+     }
+
   }
    
    render(){
@@ -256,7 +251,7 @@ class Home extends Component {
                   width={425} 
                   height={200} 
                   data={graphData}
-                  margin={{ top: 90, right: 30, left: 50, bottom: 5 }}>
+                  margin={{ top: 90, right: 30, left: 50, bottom: 10 }}>
 
                     <Tooltip />
                     <Line type="natural" dataKey="pv" stroke="white" strokeWidth= {10} dot={false}/>
@@ -265,7 +260,7 @@ class Home extends Component {
                 <ToggleButtonGroup
                     value
                     exclusive
-                    data={graphData}
+                    graphData={graphData}
                     onChange ={this.toggleButtons}
                     aria-label="text alignment"
                     className="toggle"
