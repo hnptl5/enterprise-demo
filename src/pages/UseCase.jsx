@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles  } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,6 +17,12 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import {Box, Button} from '@material-ui/core';
+import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import SendIcon from '@material-ui/icons/Send';
+
 
 const columns = [
   { id: 'name', label: 'USE Case', minWidth: 170 },
@@ -35,28 +41,28 @@ function createData(name, code, population, size) {
 }
 
 const rows = [
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete"),
-  createData('USE Case', 'Feature', "Incomplete")
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
+  createData('USE Case', 'Sample', "Incomplete"),
 ];
 
 const useStyles = makeStyles({
@@ -68,10 +74,52 @@ const useStyles = makeStyles({
   },
 });
 
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})(props => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles(theme => ({
+    
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
+
+
+
+
+
+
+
+
 export default function UseCase() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -82,15 +130,25 @@ export default function UseCase() {
     setPage(0);
   };
 
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
 
             <>
+
+        <Row>
+            <Col sm={5}>
             <List component="nav" aria-label="main mailbox folders" className="mb-3">
         <ListItem button>
           <ListItemIcon>
             <PermIdentityIcon />
           </ListItemIcon>
-          <ListItemText > <b>User</b>: Zerell</ListItemText>
+          <ListItemText > <b>User</b>: Zerell </ListItemText>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
@@ -99,6 +157,44 @@ export default function UseCase() {
           <ListItemText > <b>Use Case</b>: Use Case</ListItemText>
         </ListItem>
       </List>
+      </Col>
+
+      <Col sm={7} className="mt-5 text-right">
+            <Box>
+
+                <Button
+        aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained"
+        color="primary"
+        onClick={handleClick}
+      >
+        Open Menu
+      </Button>
+      <StyledMenu
+        id="customized-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <StyledMenuItem>
+          <ListItemIcon>
+            <SendIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Main Menu" />
+        </StyledMenuItem>
+        <StyledMenuItem>
+          <ListItemIcon>
+            <DraftsIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Create USE Case" />
+        </StyledMenuItem>
+      </StyledMenu>
+
+            </Box>
+      </Col>
+    </Row>
 
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -149,4 +245,3 @@ export default function UseCase() {
  </>
   );
 }
-
