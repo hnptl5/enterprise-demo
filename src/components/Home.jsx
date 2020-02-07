@@ -41,6 +41,7 @@ const rows = [
   createData('Zoosk', 159, "Pending"),
   createData('Online Banking', 237, "Complete"),
   createData('Lending', 237, "Complete"),
+  createData('Business Banking', 121, "Complete")
 
 ];
 
@@ -136,6 +137,15 @@ const graphData = [
     amt: 2100
   }
 ]
+
+const updateGraph = (graphData) => {
+  // daily(graphData);
+  // weekly(graphData);
+  // monthly(graphData);
+
+  // return graphData;
+}
+
 
 const renderShape = props => {
 
