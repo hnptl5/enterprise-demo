@@ -30,7 +30,7 @@ export default function UseCasePopup({openAlert}) {
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
-            Your new USE Case has been added to your App
+            New USE Case has been added to your App
           </DialogContentText>
         </DialogContent>
         <DialogActions>

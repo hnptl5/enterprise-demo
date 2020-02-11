@@ -73,6 +73,11 @@ const NewUseCase = () => {
     setOpenAlertDialog(true);
   };
 
+  
+  const handleReturn = () => {
+    window.location.href = '/case';
+  }
+
   const handleReset = (e) => {
     e.preventDefault();
     setUserName('');
@@ -143,7 +148,7 @@ const NewUseCase = () => {
               <TextField
                 id="outlined-email"
                 label="New USE Case"
-                type="email"
+                type="text"
                 value={email}
                 variant="outlined"
                 required
@@ -174,7 +179,7 @@ const NewUseCase = () => {
               <TextField
                 id="outlined-email"
                 label="New USE Case"
-                type="password"
+                type="text"
                 value={password}
                 variant="outlined"
                 required
@@ -244,30 +249,19 @@ const NewUseCase = () => {
               />
             </Form.Group>
           </div>
-          <div className="col-md-2"></div>
+          {/* <div className="col-md-2"></div>
         </div>
 
         <div className="row">
           <div className="col-md-2"></div>
-          {/* <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="Phone Number"
-                type="number"
-                value={phoneNumber}
-                variant="outlined"
-                required
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </Form.Group>
-          </div> */}
+
           <div className="col-md-4">
 
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-2"></div> */}
         </div>
         <div className="buttonSpace">
+          <CustomizedButtons OnClick={(e) => handleReturn(e)} value="Back" />
           <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
           <CustomizedButtons  type="submit" OnClick={(e) => onSubmitForm(e)} value="Create" />
         </div>

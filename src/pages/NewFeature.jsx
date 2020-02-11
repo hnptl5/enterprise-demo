@@ -73,6 +73,10 @@ const NewFeature = () => {
     setOpenAlertDialog(true);
   };
 
+  const handleReturn = () => {
+    window.location.href = '/feature';
+  }
+
   const handleReset = (e) => {
     e.preventDefault();
     setUserName('');
@@ -87,6 +91,7 @@ const NewFeature = () => {
     setPhoneNumber('');
     setBusinessLine('');
   }
+
   return (
     <Wrapper>
       { openAlertDialog && <FeaturePopup openAlert={openAlertDialog} />}
@@ -143,7 +148,7 @@ const NewFeature = () => {
               <TextField
                 id="outlined-email"
                 label="New Feature"
-                type="email"
+                type="text"
                 value={email}
                 variant="outlined"
                 required
@@ -174,7 +179,7 @@ const NewFeature = () => {
               <TextField
                 id="outlined-email"
                 label="New Feature"
-                type="password"
+                type="text"
                 value={password}
                 variant="outlined"
                 required
@@ -248,7 +253,7 @@ const NewFeature = () => {
         </div>
 
         <div className="row">
-          <div className="col-md-2"></div>
+          {/* <div className="col-md-2"></div> */}
           {/* <div className="col-md-4">
             <Form.Group controlId="formBasicEmail">
               <TextField
@@ -262,12 +267,13 @@ const NewFeature = () => {
               />
             </Form.Group>
           </div> */}
-          <div className="col-md-4">
+          {/* <div className="col-md-4">
 
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-2"></div> */}
         </div>
         <div className="buttonSpace">
+          <CustomizedButtons OnClick={(e) => handleReturn(e)} value="Back" />
           <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
           <CustomizedButtons  type="submit" OnClick={(e) => onSubmitForm(e)} value="Create" />
         </div>

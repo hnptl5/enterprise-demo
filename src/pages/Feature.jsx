@@ -154,7 +154,6 @@ export default function Feature() {
             <AppsSharpIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText> <a href= "/main" style={{color:"#000000"}}> Main Menu </a> </ListItemText>
-          {/* <ListItemText primary="Main Menu" /> */}
         </StyledMenuItem>
 
       <StyledMenuItem>
