@@ -7,6 +7,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import HomePage from './pages/HomePage';
+import NewFeature from './pages/NewFeature';
+import NewUseCase from './pages/NewUseCase';
 import MainHeader from './components/common/Header';
 import Signup from './pages/SIgnupPage';
 import UseCase from './pages/UseCase'
@@ -51,6 +53,8 @@ const IndexApp = () => {
                         <Route path='/tabs' exact component={IconLabelTabs} />
                         <Route path='/case' exact component={UseCase} />
                         <Route path='/feature' exact component={Feature} />
+                        <Route path='/newcase' exact component={NewUseCase} />
+                        <Route path='/newfeature' exact component={NewFeature} />
                     </Switch>
                     <Footer />
                 </Router>

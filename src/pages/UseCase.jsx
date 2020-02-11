@@ -22,6 +22,8 @@ import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootst
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import SendIcon from '@material-ui/icons/Send';
+import AppsSharpIcon from '@material-ui/icons/AppsSharp';
+
 
 
 const columns = [
@@ -148,7 +150,7 @@ export default function UseCase() {
           <ListItemIcon>
             <PermIdentityIcon />
           </ListItemIcon>
-          <ListItemText > <b>User</b>: Zerell </ListItemText>
+          <ListItemText > <b>App</b>: Zoosk </ListItemText>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
@@ -160,41 +162,40 @@ export default function UseCase() {
       </Col>
 
       <Col sm={7} className="mt-5 text-right">
-            <Box>
-
-                <Button
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        Open Menu
-      </Button>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+        <Box>
+          <Button
+            aria-controls="customized-menu"
+            aria-haspopup="true"
+            variant="contained"
+            color="primary"
+            onClick={handleClick}
+         >
+            Menu
+        </Button>
+        <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+         >
+        <StyledMenuItem>
+          <ListItemIcon>
+            <AppsSharpIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText> <a href= "/main" style={{color:"#000000"}}> Main Menu </a> </ListItemText>
+          {/* <ListItemText primary="Main Menu" /> */}
+        </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
             <SendIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Main Menu" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <DraftsIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Create USE Case" />
+          <ListItemText> <a href= "/newcase" style={{color:"#000000"}}> Create USE Case </a> </ListItemText>
         </StyledMenuItem>
       </StyledMenu>
-
-            </Box>
-      </Col>
-    </Row>
+    </Box>
+  </Col>
+</Row>
 
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
@@ -220,7 +221,7 @@ export default function UseCase() {
                     const value = row[column.id];
                     return (
                       <TableCell key={column.id} align={column.align}>
-                        <a href="/feature">{column.format && typeof value === 'number' ? column.format(value) : value}</a>
+                        <a href="/feature" style={{color:"#000000"}}>{column.format && typeof value === 'number' ? column.format(value) : value}</a>
                       </TableCell>
                     );
                   })}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,7 +17,13 @@ import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-
+import {Box, Button} from '@material-ui/core';
+import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import SendIcon from '@material-ui/icons/Send';
+import AppsSharpIcon from '@material-ui/icons/AppsSharp';
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 
 const columns = [
   { id: 'name', label: 'Feature', minWidth: 100 },
@@ -48,10 +54,43 @@ const useStyles = makeStyles({
   },
 });
 
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})(props => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'center',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'center',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles(theme => ({
+    
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
 export default function Feature() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -62,23 +101,80 @@ export default function Feature() {
     setPage(0);
   };
 
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
 
       <>
-            <List component="nav" aria-label="main mailbox folders" className="mb-5">
+        <Row>
+            <Col sm={5}>
+            <List component="nav" aria-label="main mailbox folders" className="mb-3">
         <ListItem button>
           <ListItemIcon>
             <PermIdentityIcon />
           </ListItemIcon>
-          <ListItemText > <b>User</b>: Zerell</ListItemText>
+          <ListItemText > <b>App</b>: Zoosk </ListItemText>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
             <BusinessCenterIcon />
           </ListItemIcon>
+          {/* <ListItemText > <b>Use Case</b>: Use Case</ListItemText> */}
           <ListItemText > <b>Feature</b>: Sample</ListItemText>
         </ListItem>
       </List>
+      </Col>
+
+      <Col sm={7} className="mt-5 text-right">
+        <Box>
+          <Button
+            aria-controls="customized-menu"
+            aria-haspopup="true"
+            variant="contained"
+            color="primary"
+            onClick={handleClick}
+         >
+            Menu
+        </Button>
+        <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+         >
+        <StyledMenuItem>
+          <ListItemIcon>
+            <AppsSharpIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText> <a href= "/main" style={{color:"#000000"}}> Main Menu </a> </ListItemText>
+          {/* <ListItemText primary="Main Menu" /> */}
+        </StyledMenuItem>
+
+      <StyledMenuItem>
+          <ListItemIcon>
+            <FormatListNumberedIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText> <a href= "/case" style={{color:"#000000"}}> USE Cases </a> </ListItemText>
+        </StyledMenuItem>
+
+        <StyledMenuItem>
+          <ListItemIcon>
+            <SendIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText> <a href= "/newfeature" style={{color:"#000000"}}> Create Feature </a> </ListItemText>
+        </StyledMenuItem>
+      </StyledMenu>
+    </Box>
+  </Col>
+</Row>
+
       
     <Paper className={classes.root}>
 
