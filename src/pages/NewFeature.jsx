@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Form } from 'react-bootstrap';
-import TextField from '@material-ui/core/TextField';
+import { Form, Table, Col, Row, InputGroup, FormControl, Card } from 'react-bootstrap';
 import { makeStyles } from '@material-ui/core/styles';
-import CustomizedButtons from "../components/common/Button";
-import FeaturePopup from '../components/common/FeaturePopup';
+import styled from 'styled-components';
+import '../components/css/feature.css';
+import Upload from '../components/common/Upload';
+// import TextField from '@material-ui/core/TextField';
+// import CustomizedButtons from "../components/common/Button";
+// import FeaturePopup from '../components/common/FeaturePopup';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,259 +29,102 @@ const Wrapper = styled.div`
     margin-top: 20px;
     padding-bottom: 30px;
   }
-  .MuiFormControl-root.MuiTextField-root {
-    width: 100%;
-    color: #00945f;
-  }
-  .MuiFormLabel-root.Mui-focused {
-    color: #00945f;
-  }
-  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: green !important;
-    color: #00945f;
-  }
-  .PrivateNotchedOutline-root-97.MuiOutlinedInput-notchedOutline {
-    border-color: #00945f;
-    color: #00945f;
-  }
-  .btn-success {
-    background-color: #47ca65;
-    border-color: #47ca65;
-  }
-  .rowPadding {
-    padding-top: 20px;
-  }
 `;
 
 const NewFeature = () => {
-  const classes = useStyles();
-  const [userName, setUserName] = useState('');
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [techTeam, setTechTeam] = useState('');
-  const [password, setPassword] = useState('');
-  const [groupMailId, setGroupMailId] = useState('');
-  const [leaderName, setLeaderName] = useState('');
-  const [leaderEmail, setLeaderEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [businessLine, setBusinessLine] = useState('');
-
-  const [openAlertDialog, setOpenAlertDialog] = useState(false);
-
-
-  const onSubmitForm = (e) => {
-    e.preventDefault();
-    setOpenAlertDialog(true);
-  };
-
-  const handleReturn = () => {
-    window.location.href = '/feature';
-  }
-
-  const handleReset = (e) => {
-    e.preventDefault();
-    setUserName('');
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setTechTeam('');
-    setPassword('');
-    setGroupMailId('');
-    setLeaderName('');
-    setLeaderEmail('');
-    setPhoneNumber('');
-    setBusinessLine('');
-  }
 
   return (
-    <Wrapper>
-      { openAlertDialog && <FeaturePopup openAlert={openAlertDialog} />}
-      <Form>
 
-        <div className="row rowPadding">
-          <div className="col-md-2"></div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={userName}
-                variant="outlined"
-                required
-                onChange={e => setUserName(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={firstname}
-                variant="outlined"
-                required
-                onChange={e => setFirstName(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-2"></div>
-        </div>
+<Form>
+  <Row>
+    <Col sm={6}>
+      <Form.Group controlId="feature.ControlInput1">
+        <Form.Label>Select App</Form.Label>
+        {/* <Form.Control type="email" placeholder="name@example.com" /> */}
+        <Form.Control as="select" placeholder="App">
+          <option>App</option>
+          <option>App</option>
+          <option>App</option>
+          <option>App</option>
+          <option>App</option>
+        </Form.Control>
+      </Form.Group>
+      </Col>
+      <Col sm={6}>
+      <Form.Group controlId="feature.ControlSelect1">
+        <Form.Label>Select USE Case</Form.Label>
+        <Form.Control as="select" placeholder="USE Case">
+          <option>USE Case</option>
+          <option>USE Case</option>
+          <option>USE Case</option>
+          <option>USE Case</option>
+          <option>USE Case</option>
+        </Form.Control>
+      </Form.Group>
+      </Col>
+    </Row>
+    <Row>
+    <Col sm={12}>
+    <Form.Group controlId="feature.ControlTextarea1">
+      <Form.Label>Description</Form.Label>
+      <Form.Control as="textarea" rows="3" size="lg" placeholder="Description"/>
+    </Form.Group>
+    </Col>
+    </Row>
 
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={lastname}
-                variant="outlined"
-                required
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={email}
-                variant="outlined"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-2"></div>
-        </div>
+      <Row>
+        <Col sm={4}>
+          <Table striped bordered hover responsive>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Features</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>  
+              <InputGroup size="lg" >
+                <FormControl
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  
+                />
+            </InputGroup>
+            </td>
+      </tr>
+      
+      <tr>
+        <td>2</td>
+        <td>Jacob</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Larry</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Sam</td>
+      </tr>
+    </tbody>
+  </Table>
+  </Col>
 
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={techTeam}
-                variant="outlined"
-                required
-                onChange={(e) => setTechTeam(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={password}
-                variant="outlined"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-2"></div>
-        </div>
+  <Col sm={4}>
+      <Card className="" >
+        <Card.Header className="text-center"> Upload Documents </Card.Header>
+        <Upload />
+      </Card>
+  </Col>
+  </Row>
+</Form>
 
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="email"
-                value={groupMailId}
-                variant="outlined"
-                required
-                onChange={(e) => setGroupMailId(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={leaderName}
-                variant="outlined"
-                required
-                onChange={(e) => setLeaderName(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-2"></div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="text"
-                value={businessLine}
-                variant="outlined"
-                required
-                onChange={(e) => setBusinessLine(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="email"
-                value={leaderEmail}
-                variant="outlined"
-                required
-                onChange={(e) => setLeaderEmail(e.target.value)}
-              />
-            </Form.Group>
-          </div>
-          <div className="col-md-2"></div>
-        </div>
-
-        <div className="row">
-          {/* <div className="col-md-2"></div> */}
-          {/* <div className="col-md-4">
-            <Form.Group controlId="formBasicEmail">
-              <TextField
-                id="outlined-email"
-                label="New Feature"
-                type="number"
-                value={phoneNumber}
-                variant="outlined"
-                required
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </Form.Group>
-          </div> */}
-          {/* <div className="col-md-4">
-
-          </div>
-          <div className="col-md-2"></div> */}
-        </div>
-        <div className="buttonSpace">
-          <CustomizedButtons OnClick={(e) => handleReturn(e)} value="Back" />
-          <CustomizedButtons OnClick={(e) => handleReset(e)} value="Reset" />
-          <CustomizedButtons  type="submit" OnClick={(e) => onSubmitForm(e)} value="Create" />
-        </div>
-      </Form>
-    </Wrapper>
   );
 };
 
 export default NewFeature;
+
+
+

@@ -10,7 +10,7 @@ import HomePage from './pages/HomePage';
 import NewFeature from './pages/NewFeature';
 import NewUseCase from './pages/NewUseCase';
 import MainHeader from './components/common/Header';
-import Signup from './pages/SIgnupPage';
+import Signup from './pages/SignupPage';
 import UseCase from './pages/UseCase'
 import Footer from './components/common/Footer';
 import IconLabelTabs from './components/common/Tabs';

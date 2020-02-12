@@ -292,7 +292,7 @@ class Home extends Component {
           <TableRow>
             <StyledTableCell>App</StyledTableCell>
             <StyledTableCell>USE Case</StyledTableCell>
-            <StyledTableCell>Status</StyledTableCell>
+            <StyledTableCell>View</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

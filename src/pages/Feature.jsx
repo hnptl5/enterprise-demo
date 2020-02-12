@@ -1,29 +1,11 @@
 import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import {List, ListItem, ListItemIcon, ListItemText, Divider} from '@material-ui/core';
+import {InboxIcon, DraftsIcon, Send, AppsSharp, FormatListNumbered, PermIdentity} from '@material-ui/icons';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import {Box, Button} from '@material-ui/core';
+import {Box, Button, Menu, MenuItem} from '@material-ui/core';
 import { Card, ListGroup, Row, Col, Form, ProgressBar, Image} from 'react-bootstrap';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import SendIcon from '@material-ui/icons/Send';
-import AppsSharpIcon from '@material-ui/icons/AppsSharp';
-import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 
 const columns = [
   { id: 'name', label: 'Feature', minWidth: 100 },
@@ -43,6 +25,7 @@ function createData(name, code, population, size) {
 
 const rows = [
   createData('Sample', 'Sample', "Incomplete"),
+  createData('Sample', 'Sample', "Incomplete")
 ];
 
 const useStyles = makeStyles({
@@ -117,7 +100,7 @@ export default function Feature() {
             <List component="nav" aria-label="main mailbox folders" className="mb-3">
         <ListItem button>
           <ListItemIcon>
-            <PermIdentityIcon />
+            <PermIdentity />
           </ListItemIcon>
           <ListItemText > <b>App</b>: Zoosk </ListItemText>
         </ListItem>
@@ -151,21 +134,21 @@ export default function Feature() {
          >
         <StyledMenuItem>
           <ListItemIcon>
-            <AppsSharpIcon fontSize="small" />
+            <AppsSharp fontSize="small" />
           </ListItemIcon>
           <ListItemText> <a href= "/main" style={{color:"#000000"}}> Main Menu </a> </ListItemText>
         </StyledMenuItem>
 
       <StyledMenuItem>
           <ListItemIcon>
-            <FormatListNumberedIcon fontSize="small" />
+            <FormatListNumbered fontSize="small" />
           </ListItemIcon>
           <ListItemText> <a href= "/case" style={{color:"#000000"}}> USE Cases </a> </ListItemText>
         </StyledMenuItem>
 
         <StyledMenuItem>
           <ListItemIcon>
-            <SendIcon fontSize="small" />
+            <Send fontSize="small" />
           </ListItemIcon>
           <ListItemText> <a href= "/newfeature" style={{color:"#000000"}}> Create Feature </a> </ListItemText>
         </StyledMenuItem>
