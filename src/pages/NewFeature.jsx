@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Table, Col, Row, InputGroup, FormControl, Card } from 'react-bootstrap';
+import { Form, Table, Col, Row, InputGroup, FormControl, Card, Button } from 'react-bootstrap';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import '../components/css/feature.css';
@@ -31,7 +31,54 @@ const Wrapper = styled.div`
   }
 `;
 
+let selectApp = ["App", "Sample", "Example"];
+let selectUseCase = [];
+let featureID;
+let templateID;
+let isID = false;
+
 const NewFeature = () => {
+let [app, setApp] = useState('');
+let [useCase, setUseCase] = useState('');
+let [featureID, setFeatureID] = useState('Feature ID');
+let [templateID, setTemplateID] = useState('Template ID');
+
+
+const handleUseCase = (app) => {
+  if(app === "App"){
+   selectUseCase = ["Case1", "Case2", "Case3"];
+   isID = true;
+  }
+   
+  if(app === "Sample"){
+   selectUseCase = ["Sample1", "Sample2", "Sample3"];
+   isID = true;
+  }
+  console.log(selectUseCase);
+}
+
+// const handleUseCase = (app) => {
+//   if(app === "App"){
+//    selectUseCase = ["Case1", "Case2", "Case3"];
+//    isID = true;
+//   }
+   
+//   if(app === "Sample"){
+//    selectUseCase = ["Sample1", "Sample2", "Sample3"];
+//    isID = true;
+//   }
+//   console.log(selectUseCase);
+// }
+
+const handleID = (useCase) => {
+
+  // if(isID){
+  setFeatureID("ID #123");
+  setTemplateID( "User #1234");
+  console.log("IN handle function " + useCase)
+  // }
+}
+
 
   return (
 
@@ -39,75 +86,106 @@ const NewFeature = () => {
   <Row>
     <Col sm={6}>
       <Form.Group controlId="feature.ControlInput1">
+      
         <Form.Label>Select App</Form.Label>
         {/* <Form.Control type="email" placeholder="name@example.com" /> */}
-        <Form.Control as="select" placeholder="App">
-          <option>App</option>
-          <option>App</option>
-          <option>App</option>
-          <option>App</option>
-          <option>App</option>
+        <Form.Control as="select" placeholder="App"
+          value={app}
+          onChange= {e => (setApp(e.target.value))}
+        >
+
+        {
+          selectApp.map(e => {
+          return(
+          <option>{e}</option>
+          )}
+          )
+        }
+        {!isID && handleUseCase(app)}
         </Form.Control>
+
       </Form.Group>
       </Col>
       <Col sm={6}>
       <Form.Group controlId="feature.ControlSelect1">
         <Form.Label>Select USE Case</Form.Label>
-        <Form.Control as="select" placeholder="USE Case">
-          <option>USE Case</option>
-          <option>USE Case</option>
-          <option>USE Case</option>
-          <option>USE Case</option>
-          <option>USE Case</option>
+        <Form.Control as="select" placeholder="USE Case"
+        value={selectUseCase}
+        onChange= {e => (handleID(e.target.value))}
+
+        >
+         {
+          selectUseCase.map(e => {
+          return(
+          <option>{e}</option>
+          )}
+          )
+        }
         </Form.Control>
       </Form.Group>
       </Col>
     </Row>
+
+  <Row>
+    <Col sm={6}>
+      <Form.Group controlId="feature.ControlInput1" className="mt-3">
+        {/* <Form.Label>Select App</Form.Label> */}
+        <Form.Control  placeholder={templateID}>
+          {/* {templateID} */}
+        </Form.Control>
+      </Form.Group>
+      </Col>
+      <Col sm={6}>
+      <Form.Group controlId="feature.ControlSelect1" className="mt-3">
+        {/* <Form.Label>Select USE Case</Form.Label> */}
+        <Form.Control  placeholder={featureID}>
+        {/* {featureID} */}
+        </Form.Control>
+      </Form.Group>
+      </Col>
+    </Row>
+
     <Row>
     <Col sm={12}>
-    <Form.Group controlId="feature.ControlTextarea1">
-      <Form.Label>Description</Form.Label>
+    <Form.Group controlId="feature.ControlTextarea1" className="mt-3">
+      {/* <Form.Label>Description</Form.Label> */}
       <Form.Control as="textarea" rows="3" size="lg" placeholder="Description"/>
     </Form.Group>
     </Col>
     </Row>
 
       <Row>
-        <Col sm={4}>
+        <Col sm={5}>
           <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>#</th>
-              <th>Features</th>
+              <th>Template Attributes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>  
-              <InputGroup size="lg" >
-                <FormControl
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  
-                />
-            </InputGroup>
+              Sample
             </td>
       </tr>
       
       <tr>
         <td>2</td>
-        <td>Jacob</td>
+        <td>Sample</td>
       </tr>
       <tr>
         <td>3</td>
-        <td>Larry</td>
+        <td>Sample</td>
       </tr>
       <tr>
         <td>4</td>
-        <td>Sam</td>
+        <td>Sample</td>
       </tr>
+      <tr> 
+        <td colSpan="2" className="text-right"> <Button> Add Row </Button> </td>
+     </tr>
     </tbody>
   </Table>
   </Col>
