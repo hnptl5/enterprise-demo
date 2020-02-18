@@ -54,29 +54,21 @@ const handleUseCase = (app) => {
    selectUseCase = ["Sample1", "Sample2", "Sample3"];
    isID = true;
   }
-  console.log(selectUseCase);
-}
 
-// const handleUseCase = (app) => {
-//   if(app === "App"){
-//    selectUseCase = ["Case1", "Case2", "Case3"];
-//    isID = true;
-//   }
-   
-//   if(app === "Sample"){
-//    selectUseCase = ["Sample1", "Sample2", "Sample3"];
-//    isID = true;
-//   }
-//   console.log(selectUseCase);
-// }
+  if(app === "Example"){
+   selectUseCase = ["Example1", "Example2", "Example3"];
+   isID = true;
+  }
+  // console.log(selectUseCase);
+}
 
 const handleID = (useCase) => {
 
-  // if(isID){
+  if(isID){
   setFeatureID("ID #123");
   setTemplateID( "User #1234");
-  console.log("IN handle function " + useCase)
-  // }
+  // console.log("IN handle function " + useCase)
+  }
 }
 
 
@@ -86,9 +78,7 @@ const handleID = (useCase) => {
   <Row>
     <Col sm={6}>
       <Form.Group controlId="feature.ControlInput1">
-      
         <Form.Label>Select App</Form.Label>
-        {/* <Form.Control type="email" placeholder="name@example.com" /> */}
         <Form.Control as="select" placeholder="App"
           value={app}
           onChange= {e => (setApp(e.target.value))}
@@ -102,6 +92,7 @@ const handleID = (useCase) => {
           )
         }
         {!isID && handleUseCase(app)}
+        
         </Form.Control>
 
       </Form.Group>
@@ -129,17 +120,13 @@ const handleID = (useCase) => {
   <Row>
     <Col sm={6}>
       <Form.Group controlId="feature.ControlInput1" className="mt-3">
-        {/* <Form.Label>Select App</Form.Label> */}
-        <Form.Control  placeholder={templateID}>
-          {/* {templateID} */}
+        <Form.Control  placeholder={templateID} disabled>
         </Form.Control>
       </Form.Group>
       </Col>
       <Col sm={6}>
       <Form.Group controlId="feature.ControlSelect1" className="mt-3">
-        {/* <Form.Label>Select USE Case</Form.Label> */}
-        <Form.Control  placeholder={featureID}>
-        {/* {featureID} */}
+        <Form.Control  placeholder={featureID} disabled>
         </Form.Control>
       </Form.Group>
       </Col>
@@ -190,7 +177,7 @@ const handleID = (useCase) => {
   </Table>
   </Col>
 
-  <Col sm={4}>
+  <Col sm={5}>
       <Card className="" >
         <Card.Header className="text-center"> Upload Documents </Card.Header>
         <Upload />

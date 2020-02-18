@@ -99,7 +99,7 @@ const messageData = [
   }
 ];
 
-let graphData = [
+let graphdata = [
   {
     pv: 2400
   },
@@ -129,7 +129,7 @@ let graphData = [
   }
 ]
 
-const updateGraph = (graphData) => {
+const updateGraph = (graphdata) => {
 }
 
 
@@ -193,7 +193,7 @@ class Home extends Component {
     activeIndex: 0,
     name: 'Lending',
     content: '',
-    graphData: [{}]
+    graphdata: [{}]
   };
 
   onPieEnter = (data, index) => {
@@ -207,18 +207,18 @@ class Home extends Component {
   toggleButtons = (data, index) => {
 
     if(index === "left"){
-      graphData = [{pv: 1200}, {pv: 800},{pv: 1},{pv: 3000},{pv: 2600},{pv: 2800}, {pv: 3400}]
-      this.setState({graphData: graphData});
+      graphdata = [{pv: 1200}, {pv: 800},{pv: 1},{pv: 3000},{pv: 2600},{pv: 2800}, {pv: 3400}]
+      this.setState({graphdata: graphdata});
     }
 
     if(index === "center"){
-      graphData = [{pv: 900}, {pv: 1200},{pv: 70},{pv: 1600},{pv: 2200},{pv: 1800}, {pv: 3000}]
-      this.setState({graphData: graphData});
+      graphdata = [{pv: 900}, {pv: 1200},{pv: 70},{pv: 1600},{pv: 2200},{pv: 1800}, {pv: 3000}]
+      this.setState({graphdata: graphdata});
     }
     
      if(index === "right"){
-      graphData = [{pv: 2000}, {pv: 1500},{pv: 1100},{pv: 1800},{pv: 900},{pv: 600}, {pv: 500}]
-      this.setState({graphData: graphData});
+      graphdata = [{pv: 2000}, {pv: 1500},{pv: 1100},{pv: 1800},{pv: 900},{pv: 600}, {pv: 500}]
+      this.setState({graphdata: graphdata});
      }
 
   }
@@ -250,7 +250,7 @@ class Home extends Component {
                 <LineChart 
                   width={425} 
                   height={200} 
-                  data={graphData}
+                  data={graphdata}
                   margin={{ top: 90, right: 30, left: 50, bottom: 10 }}>
 
                     <Tooltip />
@@ -260,7 +260,7 @@ class Home extends Component {
                 <ToggleButtonGroup
                     value
                     exclusive
-                    graphData={graphData}
+                    graphdata={graphdata}
                     onChange ={this.toggleButtons}
                     aria-label="text alignment"
                     className="toggle"
