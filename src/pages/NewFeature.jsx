@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import '../components/css/feature.css';
 import Upload from '../components/common/Upload';
+import FeatureTable from '../components/common/FeatureTable';
 // import TextField from '@material-ui/core/TextField';
 // import CustomizedButtons from "../components/common/Button";
 // import FeaturePopup from '../components/common/FeaturePopup';
@@ -144,37 +145,8 @@ const handleID = (useCase) => {
       <Row>
         <Col sm={5}>
           <Table striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Template Attributes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>  
-              Sample
-            </td>
-      </tr>
-      
-      <tr>
-        <td>2</td>
-        <td>Sample</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Sample</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Sample</td>
-      </tr>
-      <tr> 
-        <td colSpan="2" className="text-right"> <Button> Add Row </Button> </td>
-     </tr>
-    </tbody>
-  </Table>
+            <FeatureTable />
+        </Table>
   </Col>
 
   <Col sm={5}>
