@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-
 import { Form, Table, Col, Row, Button } from 'react-bootstrap';
-
 
  let tableField = [
     {
@@ -23,6 +21,8 @@ import { Form, Table, Col, Row, Button } from 'react-bootstrap';
 ];
 
 let isTable = false;
+let number = 4;
+let addNumber;
 
 const FeatureTable = () => {
 
@@ -30,27 +30,15 @@ let [addRow, setAddRow] = useState(tableField);
 
 const addNewRow = (currentRows) => {
 
-    console.log("Hello World");
-
     let newTable = 
         {
-            tr: "5",
+            tr: ++number,
             td: "New Sample"
          }
 
     addRow = currentRows.concat(newTable);
-    
-
     setAddRow(addRow);
-    // isTable = true;
-    // newTable.push(currentRows)
-    // debugger;
-    // tableField.push(newTable);
-    // addRow.push(newTable);
-    // setAddRow(newTable);
-
     console.log(addRow);
-
 }
 
     return (
@@ -63,7 +51,8 @@ const addNewRow = (currentRows) => {
         </thead>
         <tbody>
 
-            {addRow.map(fields => {
+            {
+            addRow.map(fields => {
                 return(
                     <tr>
                         <td> {fields.tr} </td>
@@ -71,11 +60,6 @@ const addNewRow = (currentRows) => {
                     </tr>
                 )
             })
-            }
-
-            {/* {isTable && addNewRow()} */}
-            { 
-                // (isTable  && <tr> <td> 5 </td> <td> </td> </tr>)
             }
             
             <tr>
