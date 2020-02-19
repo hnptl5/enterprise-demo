@@ -22,6 +22,7 @@ import { Form, Table, Col, Row, Button } from 'react-bootstrap';
     }
 ];
 
+let isTable = false;
 
 const FeatureTable = () => {
 
@@ -32,16 +33,21 @@ const addNewRow = (currentRows) => {
     console.log("Hello World");
 
     let newTable = 
-        [{
-        tr: "5",
-        td: "New Sample"
-         }]
+        {
+            tr: "5",
+            td: "New Sample"
+         }
 
+    addRow = currentRows.concat(newTable);
+    
+
+    setAddRow(addRow);
+    // isTable = true;
     // newTable.push(currentRows)
     // debugger;
     // tableField.push(newTable);
     // addRow.push(newTable);
-    setAddRow(newTable);
+    // setAddRow(newTable);
 
     console.log(addRow);
 
@@ -67,10 +73,10 @@ const addNewRow = (currentRows) => {
             })
             }
 
-            {/* {this.addRow()} */}
-
-            {/* <tr> <td> </td> <td> </td> </tr> */}
-             
+            {/* {isTable && addNewRow()} */}
+            { 
+                // (isTable  && <tr> <td> 5 </td> <td> </td> </tr>)
+            }
             
             <tr>
                 <td colSpan="2" className="text-right"> 
