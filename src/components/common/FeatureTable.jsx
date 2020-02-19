@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
 import { Form, Table, Col, Row, Button } from 'react-bootstrap';
 
@@ -22,35 +22,31 @@ import { Form, Table, Col, Row, Button } from 'react-bootstrap';
     }
 ];
 
-let isTable = false
 
-class FeatureTable extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            // isTable: false
-        }
+const FeatureTable = () => {
 
-    this.addRow = this.addRow.bind(this);
-    }
+let [addRow, setAddRow] = useState(tableField);
 
-
-
-addRow = () => {
+const addNewRow = (currentRows) => {
 
     console.log("Hello World");
-    
-    let newTable = {
+
+    let newTable = 
+        [{
         tr: "5",
         td: "New Sample"
-    }
+         }]
 
-    tableField.push(newTable);
-    console.log(tableField);
+    // newTable.push(currentRows)
+    // debugger;
+    // tableField.push(newTable);
+    // addRow.push(newTable);
+    setAddRow(newTable);
+
+    console.log(addRow);
 
 }
-    
-    render(){
+
     return (
     <>
          <thead>
@@ -61,7 +57,7 @@ addRow = () => {
         </thead>
         <tbody>
 
-            {tableField.map(fields => {
+            {addRow.map(fields => {
                 return(
                     <tr>
                         <td> {fields.tr} </td>
@@ -79,7 +75,8 @@ addRow = () => {
             <tr>
                 <td colSpan="2" className="text-right"> 
                   <Button 
-                  onClick={this.addRow}
+                  value={addRow}
+                  onClick={ () => {addNewRow(addRow)}}
                   > 
                   Add Row 
                   </Button> 
@@ -88,7 +85,6 @@ addRow = () => {
         </tbody>
     </>
     )
-    }
 }
 
 export default FeatureTable;
