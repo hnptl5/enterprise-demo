@@ -36,7 +36,6 @@ let selectApp = ["App", "Sample", "Example"];
 let selectUseCase = [];
 let featureID;
 let templateID;
-let isID = false;
 
 const NewFeature = () => {
 let [app, setApp] = useState('');
@@ -46,29 +45,32 @@ let [templateID, setTemplateID] = useState('Template ID');
 
 
 const handleUseCase = (app) => {
+
+
   if(app === "App"){
    selectUseCase = ["Case1", "Case2", "Case3"];
-   isID = true;
   }
    
   if(app === "Sample"){
    selectUseCase = ["Sample1", "Sample2", "Sample3"];
-   isID = true;
   }
 
   if(app === "Example"){
    selectUseCase = ["Example1", "Example2", "Example3"];
-   isID = true;
   }
-  // console.log(selectUseCase);
+
+  setFeatureID("Feature ID");
+  setTemplateID("Template ID");
+  setUseCase('Use Case');
+
 }
 
-const handleID = (useCase) => {
+const handleID = (payload) => {
 
-  if(isID){
+
+if(payload){
   setFeatureID("ID #123");
   setTemplateID( "User #1234");
-  // console.log("IN handle function " + useCase)
   }
 }
 
@@ -82,7 +84,7 @@ const handleID = (useCase) => {
         <Form.Label>Select App</Form.Label>
         <Form.Control as="select" placeholder="App"
           value={app}
-          onChange= {e => (setApp(e.target.value))}
+          onChange= {e => (setApp(e.target.value), handleUseCase(e.target.value))}
         >
 
         {
@@ -91,21 +93,21 @@ const handleID = (useCase) => {
           <option>{e}</option>
           )}
           )
-        }
-        {!isID && handleUseCase(app)}
-        
+        }        
+        {/* {console.log(app)} */}
         </Form.Control>
 
       </Form.Group>
       </Col>
       <Col sm={6}>
-      <Form.Group controlId="feature.ControlSelect1">
+      <Form.Group controlId="feature.ControlInput2">
         <Form.Label>Select USE Case</Form.Label>
         <Form.Control as="select" placeholder="USE Case"
         value={selectUseCase}
-        onChange= {e => (handleID(e.target.value))}
+        onChange= {e => (setUseCase(e.target.value), handleID(e.target.value))}
 
         >
+        {<option> {useCase} </option>}
          {
           selectUseCase.map(e => {
           return(
@@ -113,6 +115,8 @@ const handleID = (useCase) => {
           )}
           )
         }
+        {console.log(useCase)}
+
         </Form.Control>
       </Form.Group>
       </Col>
@@ -136,7 +140,6 @@ const handleID = (useCase) => {
     <Row>
     <Col sm={12}>
     <Form.Group controlId="feature.ControlTextarea1" className="mt-3">
-      {/* <Form.Label>Description</Form.Label> */}
       <Form.Control as="textarea" rows="3" size="lg" placeholder="Description"/>
     </Form.Group>
     </Col>
@@ -144,18 +147,18 @@ const handleID = (useCase) => {
 
       <Row>
         <Col sm={5}>
-          <Table striped bordered hover responsive>
+          <Table striped bordered hover responsive className="mb-5">
             <FeatureTable />
-        </Table>
-  </Col>
+          </Table>
+        </Col>
 
-  <Col sm={5}>
-      <Card className="" >
-        <Card.Header className="text-center"> Upload Documents </Card.Header>
-        <Upload />
-      </Card>
-  </Col>
-  </Row>
+        <Col sm={4}>
+          <Card className="">
+            <Card.Header className="text-center"> Upload Documents </Card.Header>
+            <Upload />
+         </Card>
+       </Col>
+       </Row>
 </Form>
 
   );

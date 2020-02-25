@@ -3,19 +3,19 @@ import { Form, Table, Col, Row, Button } from 'react-bootstrap';
 
  let tableField = [
     {
-        tr: "1",
+        num: "1",
         td: "Sample"
     },    
     {
-        tr: "2",
+        num: "2",
         td: "Sample"
     },   
     {
-        tr: "3",
+        num: "3",
         td: "Sample"
     },    
     {
-        tr: "4",
+        num: "4",
         td: "Sample"
     }
 ];
@@ -32,7 +32,7 @@ const addNewRow = (currentRows) => {
 
     let newTable = 
         {
-            tr: ++number,
+            num: ++number,
             td: "New Sample"
          }
 
@@ -55,7 +55,7 @@ const addNewRow = (currentRows) => {
             addRow.map(fields => {
                 return(
                     <tr>
-                        <td> {fields.tr} </td>
+                        <td> {fields.num} </td>
                         <td> {fields.td} </td>
                     </tr>
                 )
